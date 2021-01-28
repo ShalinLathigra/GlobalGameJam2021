@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Sprite",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Scripts/Item.gd"
+}, {
+"base": "Area2D",
+"class": "Shop",
+"language": "GDScript",
+"path": "res://Scripts/Shop.gd"
+} ]
 _global_script_class_icons={
-
+"Item": "",
+"Shop": ""
 }
 
 [application]
@@ -18,6 +29,10 @@ _global_script_class_icons={
 config/name="GlobalGameJam2021"
 run/main_scene="res://Scenes/Testing/MovementScene.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://Globals.gd"
 
 [input]
 
