@@ -7,8 +7,7 @@ var vel = Vector2()
 
 var anim = "IDLE"
 var direction = 'L'
-
-
+	
 func _physics_process(_delta):
 	var dir = Vector2()
 	var moving = false
