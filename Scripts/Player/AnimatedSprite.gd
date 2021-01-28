@@ -16,7 +16,3 @@ func play_anim(animName, dir):
 	if animName == "WALK":
 		if animation != "walk":
 			play("walk")
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
