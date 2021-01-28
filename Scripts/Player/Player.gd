@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-var run_speed = 600
-var accel = 300
+export var run_speed = 600
+export var accel = 300
 var friction = 0.9
 var vel = Vector2()
 
