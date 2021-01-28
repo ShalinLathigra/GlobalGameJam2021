@@ -41,7 +41,7 @@ shader_param/cutoff = 0.2
 shader_param/gradient_scale = 8.0
 shader_param/target = Vector2( 0.5, 0.5 )
 
-[node name="Map" type="Node2D"]
+[node name="Map_01" type="Node2D"]
 scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 1 )
 

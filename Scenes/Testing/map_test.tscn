@@ -8,7 +8,7 @@
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 cam = NodePath("Player/Camera2D")
-test_map = NodePath("test_map")
+map_path = NodePath("test_map")
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1.01321, -35.8209 )
