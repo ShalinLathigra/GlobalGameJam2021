@@ -31,7 +31,7 @@ tile_data = PoolIntArray( -1114118, 536870921, 0, -1114117, 536870921, 0, -11141
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1.01321, -35.8209 )
-z_index = 10
+z_index = 100
 collision_mask = 0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -43,4 +43,28 @@ editor_draw_drag_margin = true
 [node name="Child" parent="." instance=ExtResource( 3 )]
 
 [node name="Child2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 189.586, 72.8372 )
+position = Vector2( -397.27, -226.58 )
+
+[node name="Child3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 316.788, -8.14734 )
+
+[node name="Child4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 229.976, -25.9854 )
+
+[node name="Child5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 623.604, -278.097 )
+
+[node name="Child6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 294.193, -361.342 )
+
+[node name="Child7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 345.329, -343.504 )
+
+[node name="Child8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 403.6, -395.829 )
+
+[node name="Child9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 505.872, -343.504 )
+
+[node name="Child10" parent="." instance=ExtResource( 3 )]
+position = Vector2( 141.975, 25.1504 )
