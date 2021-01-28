@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/477.svg-aa8fdecd97ba8c54ab61e72b5ba097be.stex"
+path="res://.import/column.png-1411db7327850bbf2e80260ddaf30d8d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imports/Map/OGA_Tiles/Gray/477.svg"
-dest_files=[ "res://.import/477.svg-aa8fdecd97ba8c54ab61e72b5ba097be.stex" ]
+source_file="res://Imports/Map/OGA_Tiles/Gray/column.png"
+dest_files=[ "res://.import/column.png-1411db7327850bbf2e80260ddaf30d8d.stex" ]
 
 [params]
 

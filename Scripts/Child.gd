@@ -1,11 +1,10 @@
 extends KinematicBody2D
 
 
-export var following_player = true; # 
-#export var speed = 7; # how fast the child moves towards parent
-export var speed = 400;
+export var following_player = true;
+export var speed = 450; # how fast the child moves towards parent
 export var dist = 70; # how close the child is before it stops moving
-export var run_dist = 100;
+export var run_dist = 100; # distance child needs to be before it starts running
 
 var parent_node = null
 var was_moving = false

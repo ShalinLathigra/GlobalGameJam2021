@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-var run_speed = 600
-var accel = 300
+export var run_speed = 600
+export var accel = 300
 var friction = 0.9
 var vel = Vector2()
 
@@ -82,3 +82,8 @@ func _on_Area2D_body_entered(body):
 		if !children.has(body.name):
 			children[body.name] = body
 			link_children()
+
+func set_item(item):
+	item.position = Vector2(10, 0.0)
+	add_child(item)
+	print(item)
