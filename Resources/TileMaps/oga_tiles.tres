@@ -11,7 +11,7 @@
 [ext_resource path="res://Imports/Map/OGA_Tiles/Red/Floor/102.svg" type="Texture" id=9]
 [ext_resource path="res://Imports/Map/OGA_Tiles/Gray/477.svg" type="Texture" id=10]
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0.542721, 12.9695, 23.647, 0.632263, 45.9661, 13.5303, 24.5442, 24.6338 )
 
 [resource]
@@ -151,14 +151,14 @@ points = PoolVector2Array( 0.542721, 12.9695, 23.647, 0.632263, 45.9661, 13.5303
 9/navigation_offset = Vector2( 0, 0 )
 9/shape_offset = Vector2( 0, 0 )
 9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape = SubResource( 2 )
+9/shape = SubResource( 1 )
 9/shape_one_way = false
 9/shape_one_way_margin = 1.0
 9/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 9/z_index = 0

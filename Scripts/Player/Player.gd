@@ -8,6 +8,8 @@ var vel = Vector2()
 var anim = "IDLE"
 var direction = 'L'
 
+func _ready():
+	pass
 
 func _physics_process(_delta):
 	var dir = Vector2()
@@ -60,4 +62,7 @@ func _physics_process(_delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	get_node("AnimatedSprite").play_anim(anim, direction)
-#	pass
+	
+	var c1 = get_parent().get_node("Child")
+	c1.follow_node(position)
+	get_parent().get_node("Child2").follow_node(c1.position)

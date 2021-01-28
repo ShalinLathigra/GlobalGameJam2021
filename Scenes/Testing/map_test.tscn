@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Resources/TileMaps/oga_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Components/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Components/Child.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -30,6 +31,7 @@ tile_data = PoolIntArray( -1114118, 536870921, 0, -1114117, 536870921, 0, -11141
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1.01321, -35.8209 )
+z_index = 10
 collision_mask = 0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -37,3 +39,8 @@ current = true
 smoothing_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="Child" parent="." instance=ExtResource( 3 )]
+
+[node name="Child2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 189.586, 72.8372 )
