@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Child.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Child2.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://Resources/Child1.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://Resources/Child.shader" type="Shader" id=3]
 
 [sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/input_color = Color( 0.141176, 0.184314, 0.152941, 1 )
+shader_param/gender = false
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 11.8545

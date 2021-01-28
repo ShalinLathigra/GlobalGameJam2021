@@ -11,18 +11,26 @@ var parent_node = null
 var was_moving = false
 var moving = false
 
-var child_version = 0
 
 const child_a = preload("res://Resources/Child1.tres")
 const child_b = preload("res://Resources/Child2.tres")
 
 func _ready():
-	var gender = randi() % 2
-	var sprite = get_node("AnimatedSprite")
-	if gender == 1:
+	var gender = (randi() % 2) == 1
+	var sprite = $AnimatedSprite
+	if gender:
 		sprite.frames = child_a
 	else:
-		sprite.frames = child_b	
+		sprite.frames = child_b
+	
+	var r = float(randi() % 256) / 256.0
+	var g = float(randi() % 256) / 256.0
+	var b = float(randi() % 256) / 256.0
+	
+	var shirt_color = Vector3(r, g, b)
+	
+	sprite.material.set_shader_param("input_color", shirt_color)	
+	sprite.material.set_shader_param("gender", gender)
 
 
 func switch_anim(anim):
