@@ -1,14 +1,13 @@
 extends KinematicBody2D
 
-var run_speed = 600
-var accel = 300
+export var run_speed = 600
+export var accel = 300
 var friction = 0.9
 var vel = Vector2()
 
 var anim = "IDLE"
 var direction = 'L'
-
-
+	
 func _physics_process(_delta):
 	var dir = Vector2()
 	var moving = false
@@ -61,3 +60,8 @@ func _physics_process(_delta):
 func _process(_delta):
 	get_node("AnimatedSprite").play_anim(anim, direction)
 #	pass
+
+func set_item(item):
+	item.position = Vector2(10, 0.0)
+	add_child(item)
+	print(item)
