@@ -100,6 +100,7 @@ func set_item(item):
 	if (self.item):
 		self.item.type = item.type
 		self.item.texture = item.texture
+		self.item.scale = item.scale
 	else:
 		item.position = $Anchor.position
 		add_child(item)

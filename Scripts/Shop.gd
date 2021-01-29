@@ -17,13 +17,17 @@ const item_base = preload("res://Scenes/Components/Item.tscn")
 enum item_type {APPLE, CARROT, CHEESE, CHOCOLATE, FLOWERS, ICECREAM, MILK, PIZZA}
 
 export (item_type) var type
+export (Vector2) var override_scale = Vector2(1.0, 1.0)
 
 func _ready():
 	$Sprite.texture = image_map[type]
+	$Sprite.scale = override_scale
+	$AnimationPlayer.play("Idle")
 
 func _on_Shop_body_entered(body):
 	if (!body.is_holding(type)):
 		var item = item_base.instance()
 		item.texture = image_map[type]
 		item.type = type
+		item.scale = override_scale * 0.9
 		body.set_item(item)
