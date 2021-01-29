@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Shop.gd" type="Script" id=1]
-[ext_resource path="res://Imports/Items/Flowers.png" type="Texture" id=2]
+[ext_resource path="res://Resources/Items/Flowers.png" type="Texture" id=2]
+[ext_resource path="res://Imports/Circle_Shadow.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 65.2737
+radius = 43.5134
 
 [node name="Shop" type="Area2D"]
 collision_layer = 4
@@ -12,8 +13,17 @@ collision_mask = 2147483649
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1.17984, 20.5293 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 2.99661, -0.187286 )
 texture = ExtResource( 2 )
+
+[node name="Circle_Shadow" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0.341176 )
+show_behind_parent = true
+position = Vector2( 0, 15 )
+scale = Vector2( 2.5, 2 )
+texture = ExtResource( 3 )
 [connection signal="body_entered" from="." to="." method="_on_Shop_body_entered"]
