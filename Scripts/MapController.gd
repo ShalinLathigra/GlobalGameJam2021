@@ -2,14 +2,15 @@ extends Node2D
 
 const maps = [
 	preload("res://Scenes/Maps/Map_01.tscn"),
+	preload("res://Scenes/Maps/Map_02.tscn"),
 	#preload("res://Scenes/Maps/Map_11.tscn")
 	#preload("res://Scenes/Maps/Map_02.tscn")
-	preload("res://Scenes/Maps/Map_12.tscn")
+	#preload("res://Scenes/Maps/Map_12.tscn")
 	#preload("res://Scenes/Maps/Map_03.tscn")
 	#preload("res://Scenes/Maps/Map_13.tscn")
 	]
 	
-enum map_indices {MORNING_01, MORNING_12}
+enum map_indices {MORNING_01, MORNING_02}
 export (map_indices) var i
 	
 export (NodePath) var cam;
