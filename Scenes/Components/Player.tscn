@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Player/AnimatedSprite.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=2]
@@ -8,6 +8,10 @@
 radius = 9.56612
 height = 15.3622
 
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 41.8385
+height = 38.049
+
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 0
 script = ExtResource( 2 )
@@ -15,8 +19,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 2.64865, 2.11893 )
 frames = ExtResource( 3 )
-animation = "walk"
-frame = 6
+animation = "idle"
 playing = true
 script = ExtResource( 1 )
 
@@ -24,3 +27,11 @@ script = ExtResource( 1 )
 position = Vector2( 0, 55.97 )
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 1.48653, 20.7703 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

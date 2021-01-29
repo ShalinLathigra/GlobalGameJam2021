@@ -7,10 +7,17 @@ var vel = Vector2()
 
 var anim = "IDLE"
 var direction = 'L'
-	
+
+var children = {}
+var moving = false
+
+func _ready():
+	randomize()
+	pass
+
 func _physics_process(_delta):
 	var dir = Vector2()
-	var moving = false
+	moving = false
 	
 	if Input.is_action_pressed("UP"):
 		dir.y = -1
@@ -45,7 +52,7 @@ func _physics_process(_delta):
 			anim = "RUN"
 	else:
 		anim = "IDLE"
-	
+		
 	dir = dir.normalized()
 	vel += dir * accel
 	
@@ -59,7 +66,22 @@ func _physics_process(_delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	get_node("AnimatedSprite").play_anim(anim, direction)
-#	pass
+	
+func link_children():
+	var z_val = 25 # max number of children
+	if !children.empty():
+		var prev_child = self
+		for child_key in children:
+			var child = children[child_key]
+			child.follow_node(prev_child, z_val)
+			prev_child = child
+			z_val -= 1
+
+func _on_Area2D_body_entered(body):
+	if "Child" in body.name:
+		if !children.has(body.name):
+			children[body.name] = body
+			link_children()
 
 func set_item(item):
 	item.position = Vector2(10, 0.0)

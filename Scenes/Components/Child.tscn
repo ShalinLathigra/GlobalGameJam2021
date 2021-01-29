@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Child.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Child1.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://Resources/Child.shader" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/input_color = Color( 0.141176, 0.184314, 0.152941, 1 )
+shader_param/gender = false
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 11.8545
+height = 0.0
+
+[node name="Child" type="KinematicBody2D"]
+position = Vector2( -193.5, 145 )
+collision_layer = 8
+collision_mask = 9
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 1 )
+frames = ExtResource( 2 )
+animation = "idle"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.707947, 47.991 )
+rotation = 1.5708
+shape = SubResource( 2 )

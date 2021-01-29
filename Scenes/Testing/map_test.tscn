@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/MapController.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Components/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Testing/Map_01.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Components/Child.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,7 +13,7 @@ map_path = NodePath("test_map")
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1.01321, -35.8209 )
-z_index = 3
+z_index = 100
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
@@ -23,3 +24,47 @@ script = ExtResource( 4 )
 player = NodePath("..")
 
 [node name="test_map" parent="." instance=ExtResource( 3 )]
+
+[node name="Child" parent="." instance=ExtResource( 5 )]
+position = Vector2( 7.41968, 217.513 )
+z_index = 1
+
+[node name="Child2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 666.683, 382.329 )
+z_index = 1
+
+[node name="Child3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 337.051, 79.6062 )
+z_index = 1
+
+[node name="Child4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 258.007, -152.481 )
+z_index = 1
+
+[node name="Child5" parent="." instance=ExtResource( 5 )]
+position = Vector2( -468.528, 476.509 )
+z_index = 1
+
+[node name="Child6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 676.53, 547.916 )
+z_index = 1
+
+[node name="Child7" parent="." instance=ExtResource( 5 )]
+position = Vector2( -953.642, 400.695 )
+z_index = 1
+
+[node name="Child8" parent="." instance=ExtResource( 5 )]
+position = Vector2( 453.926, -37.794 )
+z_index = 1
+
+[node name="Child9" parent="." instance=ExtResource( 5 )]
+position = Vector2( -757.197, 460.04 )
+z_index = 1
+
+[node name="Child10" parent="." instance=ExtResource( 5 )]
+position = Vector2( 790.108, 303.588 )
+z_index = 1
+
+[node name="Child11" parent="." instance=ExtResource( 5 )]
+position = Vector2( -848.795, 159.406 )
+z_index = 1

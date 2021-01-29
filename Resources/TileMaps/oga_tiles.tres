@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=35 format=2]
+[gd_resource type="TileSet" load_steps=34 format=2]
 
 [ext_resource path="res://Imports/Map/OGA_Tiles/Blue/Floor/002.svg" type="Texture" id=1]
 [ext_resource path="res://Imports/Map/OGA_Tiles/Red/Floor/101.svg" type="Texture" id=2]
@@ -32,15 +32,10 @@
 [ext_resource path="res://Imports/Map/OGA_Tiles/Red/Floor/106.svg" type="Texture" id=30]
 [ext_resource path="res://Imports/Map/OGA_Tiles/Red/Floor/105.svg" type="Texture" id=31]
 
-
-
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 23.9834, 0.206253, 47.0877, 12.6556, 24.6564, 24.5442, 0.767036, 12.3192 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 0.542721, 12.9695, 23.647, 0.632263, 45.9661, 13.5303, 24.5442, 24.6338 )
-
-[sub_resource type="StreamTexture" id=3]
+[sub_resource type="StreamTexture" id=2]
 
 [resource]
 0/name = "b_base"
@@ -170,7 +165,7 @@ points = PoolVector2Array( 0.542721, 12.9695, 23.647, 0.632263, 45.9661, 13.5303
 8/shapes = [  ]
 8/z_index = 0
 9/name = "WALL_REP_2"
-9/texture = SubResource( 3 )
+9/texture = SubResource( 2 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 0, 90, 48, 36 )
@@ -179,14 +174,14 @@ points = PoolVector2Array( 0.542721, 12.9695, 23.647, 0.632263, 45.9661, 13.5303
 9/navigation_offset = Vector2( 0, 0 )
 9/shape_offset = Vector2( 0, 0 )
 9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape = SubResource( 2 )
+9/shape = SubResource( 1 )
 9/shape_one_way = false
 9/shape_one_way_margin = 1.0
 9/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 2 ),
+"shape": SubResource( 1 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 9/z_index = 0
