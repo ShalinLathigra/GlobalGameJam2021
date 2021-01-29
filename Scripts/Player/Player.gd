@@ -110,6 +110,5 @@ func set_item(item):
 func is_holding(type):
 	print(type)
 	if (self.item):
-		print("\t%s" % self.item.type)
 		return self.item.type == type
 	return false
