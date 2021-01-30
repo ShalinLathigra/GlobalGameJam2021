@@ -1,0 +1,167 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Scripts/TileMap2.gd" type="Script" id=1]
+[ext_resource path="res://Resources/TileMaps/oga_furnishings.tres" type="TileSet" id=2]
+[ext_resource path="res://Resources/TileMaps/oga_tiles.tres" type="TileSet" id=3]
+[ext_resource path="res://Imports/Items/HotCoffee Spritesheet.png" type="Texture" id=6]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+uniform float intensity = 0.5;
+
+void fragment()
+{
+	COLOR = texture(TEXTURE, UV);
+	COLOR = vec4(COLOR.rgb * intensity, COLOR.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/intensity = 0.9
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 6 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 6 )
+region = Rect2( 16, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 6 )
+region = Rect2( 16, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 6 )
+region = Rect2( 16, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 64, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 6 )
+region = Rect2( 16, 64, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 64, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 64, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 64, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=34]
+animations = [ {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="CutsceneMap" type="Node2D"]
+scale = Vector2( 1.5, 1.5 )
+script = ExtResource( 1 )
+
+[node name="Floor" type="TileMap" parent="."]
+material = SubResource( 2 )
+scale = Vector2( 2, 2 )
+mode = 1
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 48, 24 )
+collision_layer = 2
+format = 1
+tile_data = PoolIntArray( -393218, 536870914, 0, -393217, 536870914, 0, -458752, 536870914, 0, -458751, 536870914, 0, -327686, 536870923, 0, -327685, 536870923, 0, -327684, 536870923, 0, -327683, 536870923, 0, -327682, 536870932, 0, -327681, 536870932, 0, -393216, 536870930, 0, -393215, 536870930, 0, -393214, 536870923, 0, -393213, 536870923, 0, -393212, 536870923, 0, -393211, 536870923, 0, -262150, 536870923, 0, -262149, 536870920, 0, -262148, 536870920, 0, -262147, 536870920, 0, -262146, 536870914, 0, -262145, 536870914, 0, -327680, 536870914, 0, -327679, 536870914, 0, -327678, 536870920, 0, -327677, 536870920, 0, -327676, 536870920, 0, -327675, 536870923, 0, -196614, 536870923, 0, -196613, 536870920, 0, -196612, 536870920, 0, -196611, 536870920, 0, -196610, 536870914, 0, -196609, 536870914, 0, -262144, 536870914, 0, -262143, 536870914, 0, -262142, 536870920, 0, -262141, 536870920, 0, -262140, 536870920, 0, -262139, 536870923, 0, -131078, 536870923, 0, -131077, 536870920, 0, -131076, 536870920, 0, -131075, 536870920, 0, -131074, 536870914, 0, -131073, 536870914, 0, -196608, 536870914, 0, -196607, 536870914, 0, -196606, 536870920, 0, -196605, 536870920, 0, -196604, 536870920, 0, -196603, 536870923, 0, -65543, 536870918, 0, -65542, 536870941, 0, -65541, 536870918, 0, -65540, 536870918, 0, -65539, 536870918, 0, -65538, 536870920, 0, -65537, 536870920, 0, -131072, 536870920, 0, -131071, 536870920, 0, -131070, 536870912, 0, -131069, 536870912, 0, -131068, 536870912, 0, -131067, 536870925, 0, -7, 536870918, 0, -6, 536870941, 0, -5, 536870918, 0, -4, 536870918, 0, -3, 536870918, 0, -2, 536870920, 0, -1, 536870920, 0, -65536, 536870920, 0, -65535, 536870920, 0, -65534, 536870912, 0, -65533, 536870912, 0, -65532, 536870912, 0, -65531, 536870925, 0, 65529, 536870918, 0, 65530, 536870943, 0, 65531, 536870918, 0, 65532, 536870918, 0, 65533, 536870918, 0, 65534, 536870920, 0, 65535, 536870920, 0, 0, 536870920, 0, 1, 536870920, 0, 2, 536870912, 0, 3, 536870912, 0, 4, 536870912, 0, 5, 536870927, 0, 131065, 536870918, 0, 131066, 536870943, 0, 131067, 536870918, 0, 131068, 536870918, 0, 131069, 536870918, 0, 131070, 536870920, 0, 131071, 536870920, 0, 65536, 536870920, 0, 65537, 536870920, 0, 65538, 536870912, 0, 65539, 536870912, 0, 65540, 536870912, 0, 65541, 536870927, 0, 196602, 536870923, 0, 196603, 536870920, 0, 196604, 536870920, 0, 196605, 536870920, 0, 196606, 536870916, 0, 196607, 536870916, 0, 131072, 536870916, 0, 131073, 536870916, 0, 131074, 536870920, 0, 131075, 536870920, 0, 131076, 536870920, 0, 131077, 536870923, 0, 262138, 536870923, 0, 262139, 536870920, 0, 262140, 536870920, 0, 262141, 536870920, 0, 262142, 536870916, 0, 262143, 536870916, 0, 196608, 536870916, 0, 196609, 536870916, 0, 196610, 536870920, 0, 196611, 536870920, 0, 196612, 536870920, 0, 196613, 536870923, 0, 327674, 536870923, 0, 327675, 536870920, 0, 327676, 536870920, 0, 327677, 536870920, 0, 327678, 536870916, 0, 327679, 536870916, 0, 262144, 536870916, 0, 262145, 536870916, 0, 262146, 536870920, 0, 262147, 536870920, 0, 262148, 536870920, 0, 262149, 536870923, 0, 393210, 536870923, 0, 393211, 536870923, 0, 393212, 536870923, 0, 393213, 536870923, 0, 393214, 536870937, 0, 393215, 536870937, 0, 327680, 536870935, 0, 327681, 536870935, 0, 327682, 536870923, 0, 327683, 536870923, 0, 327684, 536870923, 0, 458750, 536870916, 0, 458751, 536870916, 0, 393216, 536870916, 0, 393217, 536870916, 0 )
+
+[node name="Furnishings" type="TileMap" parent="."]
+z_index = 3
+mode = 1
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 48, 24 )
+format = 1
+tile_data = PoolIntArray( -720911, 24, 0, -720905, 7, 0, -655369, 7, 0, -589835, 1, 0, -589834, 7, 0, -589833, 7, 0 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -72.1587, -272.223 )
+scale = Vector2( 2.2, 2.2 )
+z_index = 4
+frames = SubResource( 34 )
+frame = 16
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( -72.7526, -232.429 )
+scale = Vector2( 2.2, 2.2 )
+z_index = 4
+frames = SubResource( 34 )
+frame = 16
+playing = true
+flip_h = true

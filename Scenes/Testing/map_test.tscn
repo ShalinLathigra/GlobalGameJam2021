@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/MapController.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Components/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Maps/Map_01.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/Components/Child.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,47 +23,3 @@ script = ExtResource( 4 )
 player = NodePath("..")
 
 [node name="test_map" parent="." instance=ExtResource( 3 )]
-
-[node name="Child" parent="." instance=ExtResource( 5 )]
-position = Vector2( 7.41968, 217.513 )
-z_index = 1
-
-[node name="Child2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 666.683, 382.329 )
-z_index = 1
-
-[node name="Child3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 337.051, 79.6062 )
-z_index = 1
-
-[node name="Child4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 258.007, -152.481 )
-z_index = 1
-
-[node name="Child5" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1491.47, 700.509 )
-z_index = 1
-
-[node name="Child6" parent="." instance=ExtResource( 5 )]
-position = Vector2( 676.53, 547.916 )
-z_index = 1
-
-[node name="Child7" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1990.36, 1040.7 )
-z_index = 1
-
-[node name="Child8" parent="." instance=ExtResource( 5 )]
-position = Vector2( 453.926, -37.794 )
-z_index = 1
-
-[node name="Child9" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1842.8, 924.04 )
-z_index = 1
-
-[node name="Child10" parent="." instance=ExtResource( 5 )]
-position = Vector2( 790.108, 303.588 )
-z_index = 1
-
-[node name="Child11" parent="." instance=ExtResource( 5 )]
-position = Vector2( -296.795, -72.594 )
-z_index = 1

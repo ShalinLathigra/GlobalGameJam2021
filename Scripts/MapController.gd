@@ -22,7 +22,6 @@ var current_map = null
 
 func _ready():
 	_update_map()
-	_ready_kids()
 	
 func _update_map():
 	if (get_node(map_path)):
@@ -35,17 +34,32 @@ func _update_map():
 	
 	if (get_node(cam)):
 		get_node(cam).set_walls(new_map)
-		
+	
+	available_items = []
 	for x in new_map.get_children():
 		if "Shop" in x.name:
-			available_items.push_back(x.type)
-
+			for y in x.get_children():
+				if "Shop" in y.name:
+					available_items.push_back(y.type)
+					
+	_free_kids();
+	_ready_kids()
+	
+func _free_kids():
+	for x in self.kids:
+		if (x):
+			x.queue_free()
+	get_node("/root/Node2D/Player").children = {}
+		
 func _ready_kids():
-	for x in self.get_children():
-		if "Child" in x.name:
-			var item_type = available_items[randi() % available_items.size()]
-			var item = current_map.find_node("Shop*").get_item(item_type)
-			x.spawn_kid(item)
+	for x in get_node(map_path).get_children():
+		if "Children" in x.name:
+			for y in x.get_children():
+				if "Children" in x.name:
+					var item_type = available_items[randi() % available_items.size()]
+					var item = current_map.find_node("Shops").find_node("Shop*").get_item(item_type)
+					y.spawn_kid(item)
+					kids.push_back(y)
 
 func _input(event):
 	if (Input.is_action_just_pressed("next_map")):
