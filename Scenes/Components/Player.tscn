@@ -47,3 +47,13 @@ position = Vector2( 0, 66 )
 scale = Vector2( 2.5, 1.25 )
 texture = ExtResource( 4 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[node name="Anchor" type="Node2D" parent="."]
+position = Vector2( -19.1838, 43.2054 )
+
+[node name="Circle_Shadow" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0.505882 )
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 0, 66 )
+scale = Vector2( 2.5, 1.25 )
+texture = ExtResource( 4 )
