@@ -11,6 +11,10 @@ export var speed = 450; # how fast the child moves towards parent
 export var dist = 70; # how close the child is before it stops moving
 export var run_dist = 100; # distance child needs to be before it starts running
 
+
+var tick_time = 15.0
+var timer = 0.0
+
 var parent_node = null
 var was_moving = false
 var moving = false
@@ -40,8 +44,6 @@ func _setup_sprite():
 
 func _ready():
 	_setup_sprite()
-	
-
 
 func switch_anim(anim):
 	var sprite = get_node("AnimatedSprite")
@@ -79,7 +81,19 @@ func _physics_process(delta):
 		STATE.NOT_SPAWNED:
 			$AnimatedSprite.visible = false
 
-func _process(delta):
+func _tick_time(delta):
+	timer += delta
+	if timer > tick_time:
+		timer = 0.001
+		match happy_state:
+			HAPPINESS.HAPPY:
+				happy_state = HAPPINESS.NEUTRAL
+			HAPPINESS.NEUTRAL:
+				happy_state = HAPPINESS.VERY_UNHAPPY
+			HAPPINESS.VERY_UNHAPPY:
+				print("UH_OH") # TODO
+
+func _update_item_sprite():
 	match happy_state:
 		HAPPINESS.HAPPY:
 			if (self.item):
@@ -87,11 +101,29 @@ func _process(delta):
 		HAPPINESS.NEUTRAL:
 			if (self.item):
 				self.item.visible = true
-				self.item.material.set_shader_param("jitter", 0.0)
+				
+				if (timer > 0):
+					self.item.material.set_shader_param("jitter", 1.0)
+				else:
+					self.item.material.set_shader_param("jitter", 0.0)
+				self.item.material.set_shader_param("jitter_period", 0.2 + timer/tick_time)
 		HAPPINESS.VERY_UNHAPPY:
 			if (self.item):
 				self.item.visible = true
 				self.item.material.set_shader_param("jitter", 1.0)
+				self.item.material.set_shader_param("jitter_period", 1.2 + timer/tick_time)
+				self.item.material.set_shader_param("color_red", 1.0)
+
+func _process(delta):
+	match world_state:
+		STATE.FOLLOWING_PLAYER:
+			_tick_time(delta)
+			_update_item_sprite()
+		_:
+			self.item.visible = false
+
+func follow_me():
+	world_state = STATE.FOLLOWING_PLAYER
 
 # tell the child to follow the player (or line of kids)
 func follow_node(node, z_val):

@@ -9,11 +9,18 @@ code = "shader_type canvas_item;
 uniform float jitter : hint_range(0,1);
 uniform float jitter_scale : hint_range(5,10);
 uniform float jitter_period = 6.0;
+uniform float color_red : hint_range(0,1);
 
 const float PI = 3.14159265;
 
 void vertex(){
 	VERTEX.y += (sin(TIME * PI * jitter_period) * jitter) * jitter_scale;
+}
+
+void fragment(){
+	COLOR = texture(TEXTURE, UV);
+	float delta_r = color_red / 3.0;
+	COLOR = vec4(COLOR.r + delta_r, COLOR.g - delta_r, COLOR.b - delta_r, COLOR.a);
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -22,6 +29,7 @@ shader = SubResource( 1 )
 shader_param/jitter = 0.7
 shader_param/jitter_scale = 5.67
 shader_param/jitter_period = 9.0
+shader_param/color_red = 0.0
 
 [node name="Item" type="Sprite"]
 material = SubResource( 2 )

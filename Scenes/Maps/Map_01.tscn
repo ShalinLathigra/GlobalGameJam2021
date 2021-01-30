@@ -226,7 +226,7 @@ position = Vector2( -72.1587, -272.223 )
 scale = Vector2( 2.2, 2.2 )
 z_index = 4
 frames = SubResource( 30 )
-frame = 10
+frame = 12
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -234,6 +234,6 @@ position = Vector2( -72.7526, -232.429 )
 scale = Vector2( 2.2, 2.2 )
 z_index = 4
 frames = SubResource( 30 )
-frame = 10
+frame = 12
 playing = true
 flip_h = true
