@@ -14,7 +14,7 @@ uniform float color_red : hint_range(0,1);
 const float PI = 3.14159265;
 
 void vertex(){
-	VERTEX.y += (sin(TIME * PI * jitter_period) * jitter) * jitter_scale;
+	VERTEX.y += (sin(mod(TIME * PI * jitter_period, 2. * PI)) * jitter) * jitter_scale;
 }
 
 void fragment(){
