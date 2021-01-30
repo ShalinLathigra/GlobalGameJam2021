@@ -20,12 +20,13 @@ var was_moving = false
 var moving = false
 
 var happy_state = HAPPINESS.NEUTRAL
-var world_state = STATE.IDLE # TODO
+var world_state = STATE.NOT_SPAWNED
 var current_desire = Shop.item_type.APPLE
 
 onready var item = null
 
 func _setup_sprite():
+	world_state = STATE.NOT_SPAWNED
 	var gender = (randi() % 2) == 1
 	var sprite = $AnimatedSprite
 	if gender:
@@ -125,6 +126,8 @@ func _process(delta):
 		STATE.FOLLOWING_PLAYER:
 			_tick_time(delta)
 			_update_item_sprite()
+		STATE.NOT_SPAWNED:
+			pass
 		_:
 			self.item.visible = false
 
@@ -156,6 +159,7 @@ func set_item(item):
 		add_child(item)
 		self.item = item
 	self.item.material.set_shader_param("jitter", 0.0)
+
 # 
 func spawn_kid(item):
 	current_desire = item.type
