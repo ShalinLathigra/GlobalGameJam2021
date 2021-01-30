@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Scripts/TileMap2.gd" type="Script" id=1]
 [ext_resource path="res://Resources/TileMaps/oga_furnishings.tres" type="TileSet" id=2]
@@ -74,15 +74,15 @@ shader_param/cutoff = 0.2
 shader_param/gradient_scale = 8.0
 shader_param/target = Vector2( 0.5, 0.5 )
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="ConvexPolygonShape2D" id=32]
 points = PoolVector2Array( 23.9834, 0.206253, 47.0877, 12.6556, 24.6564, 24.5442, 0.767036, 12.3192 )
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=33]
 points = PoolVector2Array( 1.30912, 12.2444, 23.8339, 0.654877, 46.1718, 12.5248, 23.9274, 24.1143 )
 
-[sub_resource type="StreamTexture" id=7]
+[sub_resource type="StreamTexture" id=34]
 
-[sub_resource type="TileSet" id=8]
+[sub_resource type="TileSet" id=35]
 0/name = "b_base"
 0/texture = ExtResource( 25 )
 0/tex_offset = Vector2( 0, 0 )
@@ -205,19 +205,19 @@ points = PoolVector2Array( 1.30912, 12.2444, 23.8339, 0.654877, 46.1718, 12.5248
 8/navigation_offset = Vector2( 0, 0 )
 8/shape_offset = Vector2( 0, 0 )
 8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-8/shape = SubResource( 6 )
+8/shape = SubResource( 33 )
 8/shape_one_way = false
 8/shape_one_way_margin = 1.0
 8/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 6 ),
+"shape": SubResource( 33 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 8/z_index = 0
 9/name = "WALL_REP_2"
-9/texture = SubResource( 7 )
+9/texture = SubResource( 34 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 0, 90, 48, 36 )
@@ -226,14 +226,14 @@ points = PoolVector2Array( 1.30912, 12.2444, 23.8339, 0.654877, 46.1718, 12.5248
 9/navigation_offset = Vector2( 0, 0 )
 9/shape_offset = Vector2( 0, 0 )
 9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape = SubResource( 5 )
+9/shape = SubResource( 32 )
 9/shape_one_way = false
 9/shape_one_way_margin = 1.0
 9/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 32 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 9/z_index = 0
@@ -261,14 +261,14 @@ points = PoolVector2Array( 1.30912, 12.2444, 23.8339, 0.654877, 46.1718, 12.5248
 11/navigation_offset = Vector2( 0, 0 )
 11/shape_offset = Vector2( 0, 0 )
 11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-11/shape = SubResource( 5 )
+11/shape = SubResource( 32 )
 11/shape_one_way = false
 11/shape_one_way_margin = 1.0
 11/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 32 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 11/z_index = 0
@@ -553,11 +553,11 @@ points = PoolVector2Array( 1.30912, 12.2444, 23.8339, 0.654877, 46.1718, 12.5248
 31/shapes = [  ]
 31/z_index = 0
 
-[sub_resource type="CapsuleShape2D" id=9]
-radius = 89.1233
-height = 419.749
+[sub_resource type="CapsuleShape2D" id=31]
+radius = 67.8695
+height = 241.08
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 16, 16 )
 
@@ -695,7 +695,7 @@ material = SubResource( 4 )
 scale = Vector2( 3, 3 )
 z_index = 2
 mode = 1
-tile_set = SubResource( 8 )
+tile_set = SubResource( 35 )
 cell_size = Vector2( 48, 24 )
 format = 1
 
@@ -806,3 +806,31 @@ z_index = 3
 z_as_relative = false
 type = 6
 override_scale = Vector2( 2, 2 )
+
+[node name="Exits" type="Node2D" parent="."]
+z_index = 4
+
+[node name="Area2D" type="Area2D" parent="Exits"]
+position = Vector2( 1779.13, 898.794 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Area2D"]
+position = Vector2( 2.9696, 14.6499 )
+rotation = 1.11011
+shape = SubResource( 31 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -72.1587, -272.223 )
+scale = Vector2( 2.2, 2.2 )
+z_index = 4
+frames = SubResource( 30 )
+frame = 12
+playing = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( -72.7526, -232.429 )
+scale = Vector2( 2.2, 2.2 )
+z_index = 4
+frames = SubResource( 30 )
+frame = 12
+playing = true
+flip_h = true
