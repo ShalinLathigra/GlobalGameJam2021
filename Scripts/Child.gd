@@ -10,14 +10,14 @@ enum STATE {NOT_SPAWNED, IDLE, FOLLOWING_PLAYER, RUNNING}
 export var speed = 450; # how fast the child moves towards parent
 export var dist = 70; # how close the child is before it stops moving
 export var run_dist = 100; # distance child needs to be before it starts running
-
+export var safe_dist = 200;
 
 var tick_time = 15.0
 var timer = 0.0
 
 var parent_node = null
-var was_moving = false
 var moving = false
+var run_from_player = false
 
 var happy_state = HAPPINESS.NEUTRAL
 var world_state = STATE.NOT_SPAWNED
@@ -93,6 +93,11 @@ func _run_to_exit():
 	var exit_position = get_node("/root/Node2D").current_map.get_nearest_exit(position)	
 
 	if (player.position - position).length() < run_dist:
+		run_from_player = true
+	if (player.position - position).length() > safe_dist:
+		run_from_player = false
+	
+	if run_from_player:
 		_move_from_target(player.position)
 	else:
 		_move_towards_target(exit_position)
