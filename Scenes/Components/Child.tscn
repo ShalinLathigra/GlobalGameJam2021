@@ -30,3 +30,6 @@ playing = true
 position = Vector2( 0.707947, 47.991 )
 rotation = 1.5708
 shape = SubResource( 2 )
+
+[node name="Anchor" type="Node2D" parent="."]
+position = Vector2( 32.0918, -41.0586 )

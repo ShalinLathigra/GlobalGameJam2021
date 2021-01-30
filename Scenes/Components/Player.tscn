@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Player/AnimatedSprite.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=2]
@@ -35,7 +35,7 @@ collision_mask = 9
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 1.48653, 20.7703 )
 shape = SubResource( 2 )
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+
 [node name="Anchor" type="Node2D" parent="."]
 position = Vector2( -19.1838, 43.2054 )
 
@@ -46,3 +46,15 @@ light_mask = 0
 position = Vector2( 0, 66 )
 scale = Vector2( 2.5, 1.25 )
 texture = ExtResource( 4 )
+
+[node name="Anchor" type="Node2D" parent="."]
+position = Vector2( -19.1838, 43.2054 )
+
+[node name="Circle_Shadow" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 0.505882 )
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 0, 66 )
+scale = Vector2( 2.5, 1.25 )
+texture = ExtResource( 4 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
