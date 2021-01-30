@@ -57,13 +57,13 @@ func _free_kids():
 	get_node("/root/Node2D/Player").children = {}
 		
 func _ready_kids():
-	kid_spawn_timer = 0.0
-	kids_alive = 0.0
 	for x in get_node(map_path).get_children():
 		if "Children" in x.name:
 			for y in x.get_children():
-				if "Child" in y.name:
-					y.tick_time = get_node(map_path).KID_NEEDINESS
+				if "Children" in x.name:
+					var item_type = available_items[randi() % available_items.size()]
+					var item = current_map.find_node("Shops").find_node("Shop*").get_item(item_type)
+					y.spawn_kid(item)
 					kids.push_back(y)
 
 func _input(event):
