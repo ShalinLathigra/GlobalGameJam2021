@@ -21,7 +21,8 @@ var kids = []
 var current_map = null
 
 var kid_spawn_timer = 0.0
-var kids_alive = 0.0
+var kids_alive = 0
+var kids_lost = 0
 
 func _ready():
 	randomize()
@@ -61,7 +62,8 @@ func _ready_kids():
 	for x in get_node(map_path).get_children():
 		if "Children" in x.name:
 			for y in x.get_children():
-				if "Child" in x.name:
+				if "Child" in y.name:
+					y.tick_time = get_node(map_path).KID_NEEDINESS
 					kids.push_back(y)
 
 func _input(event):
@@ -91,3 +93,8 @@ func _process(delta):
 		if kid_spawn_timer > kid_wait_time:
 			_spawn_rand_kid()
 			kid_spawn_timer = 0.0
+
+func lose_child(child):
+	kids_lost += 1
+	kids.erase(child)
+	print(kids_lost)

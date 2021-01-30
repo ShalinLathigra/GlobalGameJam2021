@@ -51,25 +51,52 @@ func switch_anim(anim):
 	if sprite.animation != anim:
 		sprite.animation = anim
 
+func _disable_player_collision():
+	set_collision_mask_bit (0, false)
+
+func _enable_player_collision():
+	set_collision_mask_bit (0, true)
 
 func _following_player():
-	set_collision_mask_bit (0, false)
+	_disable_player_collision()
 	if parent_node != null:
 		if (parent_node.position - position).length() < dist:
 			moving = false
 			switch_anim("idle")
 		if (parent_node.position - position).length() > run_dist:
 			moving = true
-			switch_anim("run")
 		if moving:
-			_move_towards_parent()
+			_move_towards_target(parent_node.position)
 
-func _move_towards_parent():
-	move_and_slide((parent_node.position - position).normalized() * speed)
-	if parent_node.position.x < position.x:
+func _move_towards_target(target_position):
+	switch_anim("run")
+	move_and_slide((target_position - position).normalized() * speed)
+	if target_position.x < position.x:
 		get_node("AnimatedSprite").flip_h = true
 	else:
 		get_node("AnimatedSprite").flip_h = false
+
+func _move_from_target(target_position):
+	switch_anim("run")
+	move_and_slide((position - target_position).normalized() * speed)
+	if target_position.x > position.x:
+		get_node("AnimatedSprite").flip_h = true
+	else:
+		get_node("AnimatedSprite").flip_h = false
+
+func _run_to_exit():
+	_enable_player_collision()
+	
+	var player = get_node("/root/Node2D/Player")
+	player.remove_child(self.name)
+	
+	var exit_position = get_node("/root/Node2D").current_map.get_nearest_exit(position)	
+
+	if (player.position - position).length() < run_dist:
+		_move_from_target(player.position)
+	else:
+		_move_towards_target(exit_position)
+
 
 func _physics_process(delta):
 	$AnimatedSprite.visible = true
@@ -81,6 +108,8 @@ func _physics_process(delta):
 			pass
 		STATE.NOT_SPAWNED:
 			$AnimatedSprite.visible = false
+		STATE.RUNNING:
+			_run_to_exit()
 
 func _tick_time(delta):
 	timer += delta
@@ -92,7 +121,7 @@ func _tick_time(delta):
 			HAPPINESS.NEUTRAL:
 				happy_state = HAPPINESS.VERY_UNHAPPY
 			HAPPINESS.VERY_UNHAPPY:
-				print("UH_OH") # TODO
+				world_state = STATE.RUNNING
 	match happy_state:
 		HAPPINESS.HAPPY:
 			pass
@@ -133,6 +162,7 @@ func _process(delta):
 
 func follow_me():
 	world_state = STATE.FOLLOWING_PLAYER
+	timer = 0.0
 
 # tell the child to follow the player (or line of kids)
 func follow_node(node, z_val):
@@ -166,3 +196,9 @@ func spawn_kid(item):
 	set_item(item)
 	world_state = STATE.IDLE
 	happy_state = HAPPINESS.NEUTRAL
+
+func _on_Area2D_area_entered(area):
+	if "Exit" in area.name:
+		get_node("/root/Node2D").lose_child(self)
+		$AnimatedSprite.visible = false
+		queue_free()

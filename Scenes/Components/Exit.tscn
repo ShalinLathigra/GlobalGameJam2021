@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Maps/Exit.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 89.1233
+height = 419.749
+
+[node name="Exit01" type="Area2D"]
+position = Vector2( 2672.91, 1317.4 )
+collision_layer = 9
+collision_mask = 9
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.11011
+shape = SubResource( 1 )
