@@ -16,8 +16,13 @@ export (map_indices) var i
 export (NodePath) var cam;
 export (NodePath) var map_path;
 
+var available_items = []
+var kids = []
+var current_map = null
+
 func _ready():
 	_update_map()
+	_ready_kids()
 	
 func _update_map():
 	if (get_node(map_path)):
@@ -26,13 +31,30 @@ func _update_map():
 	var new_map = maps[i].instance()
 	add_child(new_map)
 	map_path = new_map.name
+	current_map = new_map
 	
 	if (get_node(cam)):
 		get_node(cam).set_walls(new_map)
 		
-	
+	for x in new_map.get_children():
+		if "Shop" in x.name:
+			available_items.push_back(x.type)
+
+func _ready_kids():
+	for x in self.get_children():
+		if "Child" in x.name:
+			var item_type = available_items[randi() % available_items.size()]
+			var item = current_map.find_node("Shop*").get_item(item_type)
+			x.spawn_kid(item)
+
 func _input(event):
 	if (Input.is_action_just_pressed("next_map")):
 		i += 1
 		i %= map_indices.size()
 		_update_map()
+
+
+
+func _process(delta):
+	
+	pass

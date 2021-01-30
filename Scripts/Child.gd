@@ -4,6 +4,9 @@ class_name Child
 const child_a = preload("res://Resources/Child1.tres")
 const child_b = preload("res://Resources/Child2.tres")
 
+enum HAPPINESS {HAPPY, NEUTRAL, VERY_UNHAPPY}
+enum STATE {NOT_SPAWNED, IDLE, FOLLOWING_PLAYER, RUNNING}
+
 export var speed = 450; # how fast the child moves towards parent
 export var dist = 70; # how close the child is before it stops moving
 export var run_dist = 100; # distance child needs to be before it starts running
@@ -12,12 +15,11 @@ var parent_node = null
 var was_moving = false
 var moving = false
 
-enum {HAPPY, NEUTRAL, VERY_UNHAPPY}
-enum {NOT_SPAWNED, IDLE, FOLLOWING_PLAYER, RUNNING}
+var happy_state = HAPPINESS.NEUTRAL
+var world_state = STATE.IDLE # TODO
+var current_desire = Shop.item_type.APPLE
 
-var happy_state = HAPPY
-var world_state = IDLE # TODO
-var current_desire = 0
+onready var item = null
 
 func _setup_sprite():
 	var gender = (randi() % 2) == 1
@@ -70,22 +72,34 @@ func _physics_process(delta):
 	$AnimatedSprite.visible = true
 	
 	match world_state:
-		FOLLOWING_PLAYER:
+		STATE.FOLLOWING_PLAYER:
 			_following_player()
-		IDLE:
+		STATE.IDLE:
 			pass
-		NOT_SPAWNED:
+		STATE.NOT_SPAWNED:
 			$AnimatedSprite.visible = false
 			
 
 # tell the child to follow the player (or line of kids)
 func follow_node(node, z_val):
-	world_state = FOLLOWING_PLAYER
+	get_tree().get_class()
+	
+	world_state = STATE.FOLLOWING_PLAYER
 	parent_node = node
 	z_index = z_val
 
+func set_item(item):
+	if (self.item):
+		self.item.type = item.type
+		self.item.texture = item.texture
+		self.item.scale = item.scale
+	else:
+		item.position = $Anchor.position
+		add_child(item)
+		self.item = item
 # 
-func spawn_kid(desire):
-	current_desire = desire
-	world_state = IDLE
-	
+func spawn_kid(item):
+	current_desire = item.type
+	set_item(item)
+	world_state = STATE.IDLE
+	happy_state = HAPPINESS.NEUTRAL

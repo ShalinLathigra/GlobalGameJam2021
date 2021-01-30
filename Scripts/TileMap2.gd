@@ -1,4 +1,5 @@
 extends Node2D
+class_name Map
 
 var WALL_INDEX = 11
 var WALL_IMAGE_INDEX = 10

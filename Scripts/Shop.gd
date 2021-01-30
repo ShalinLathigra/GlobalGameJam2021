@@ -24,10 +24,16 @@ func _ready():
 	$Sprite.scale = override_scale
 	$AnimationPlayer.play("Idle")
 
+func get_item(type):
+	var item = item_base.instance()
+	item.texture = image_map[type]
+	item.type = type
+	item.scale = override_scale * 0.9
+	return item
+
+
 func _on_Shop_body_entered(body):
 	if (!body.is_holding(type)):
-		var item = item_base.instance()
-		item.texture = image_map[type]
-		item.type = type
-		item.scale = override_scale * 0.9
+		var item = get_item(type)
 		body.set_item(item)
+

@@ -47,14 +47,14 @@ position = Vector2( 1.17984, 20.5293 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 3, -0.898522 )
+position = Vector2( 3, -0.2 )
 texture = ExtResource( 2 )
 
 [node name="Circle_Shadow" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 0.341176 )
 show_behind_parent = true
 position = Vector2( 0, 14.8127 )
-scale = Vector2( 2.05821, 1.94657 )
+scale = Vector2( 2, 1.9 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -87,6 +87,10 @@ func link_children():
 			prev_child = child
 			z_val -= 1
 
+func remove_child(child_name):
+	children.erase(child_name)
+	link_children()
+
 func _on_Area2D_body_entered(body):
 	if "Child" in body.name:
 		if !children.has(body.name):
