@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Scripts/TileMap2.gd" type="Script" id=1]
 [ext_resource path="res://Resources/TileMaps/oga_furnishings.tres" type="TileSet" id=2]
@@ -156,8 +156,7 @@ animations = [ {
 radius = 98.734
 height = 235.685
 
-[node name="Map_01" type="Node2D"]
-scale = Vector2( 1.5, 1.5 )
+[node name="Map_02" type="Node2D"]
 script = ExtResource( 1 )
 MAX_KIDS = 6
 KID_NEEDINESS = 15
@@ -354,14 +353,7 @@ scale = Vector2( 4.32236, 7.82065 )
 z_index = 2
 texture = ExtResource( 5 )
 
-[node name="Circle_Shadow25" type="Sprite" parent="Node2D"]
-modulate = Color( 0, 0.670588, 0.996078, 0.517647 )
-position = Vector2( 291.044, 562.709 )
-scale = Vector2( 4.32236, 7.82065 )
-z_index = 2
-texture = ExtResource( 5 )
-
-[node name="Circle_Shadow4" type="Sprite" parent="Node2D"]
+[node name="Circle_Shadow4" type="Sprite" parent="LightShadows"]
 modulate = Color( 0.0784314, 0.996078, 0, 0.517647 )
 position = Vector2( 1831.3, 516.015 )
 scale = Vector2( 4.53569, 3.87398 )
@@ -465,8 +457,61 @@ flip_h = true
 [node name="Exits" type="Node2D" parent="."]
 
 [node name="Exit1" type="Area2D" parent="Exits"]
-position = Vector2( 2672.69, 1325.66 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Exit1"]
+position = Vector2( 2656.01, 1368.15 )
 rotation = 1.12143
 shape = SubResource( 31 )
+
+[node name="Children" type="Node2D" parent="."]
+
+[node name="Child" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 66.7153, 116.716 )
+
+[node name="Child2" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 423.097, -61.4752 )
+
+[node name="Child3" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 703.111, 388.245 )
+
+[node name="Child4" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 1104.75, 425.014 )
+
+[node name="Child5" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 751.195, 801.195 )
+
+[node name="Child6" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 578.661, 877.563 )
+
+[node name="Child7" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 875.646, 900.19 )
+
+[node name="Child8" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 1585.58, 1007.67 )
+
+[node name="Child9" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 2371.88, 1075.55 )
+
+[node name="Child12" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 2615.13, 857.764 )
+
+[node name="Child13" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 2489.65, 716.271 )
+
+[node name="Child14" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 2081.62, 540.995 )
+
+[node name="Child15" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 1943.58, 465.867 )
+
+[node name="Child16" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 2130.87, 378.965 )
+
+[node name="Child17" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 1542.03, 271.087 )
+
+[node name="Child10" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 2128.64, 1310.31 )
+
+[node name="Child11" parent="Children" instance=ExtResource( 7 )]
+position = Vector2( 1927.82, 1149.09 )
