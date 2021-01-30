@@ -96,7 +96,7 @@ func _tick_time(delta):
 		HAPPINESS.HAPPY:
 			pass
 		_:
-			get_node("../Player").bug_player()
+			get_node("/root/Node2D/Player").bug_player()
 
 func _update_item_sprite():
 	match happy_state:
