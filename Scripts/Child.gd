@@ -78,15 +78,35 @@ func _physics_process(delta):
 			pass
 		STATE.NOT_SPAWNED:
 			$AnimatedSprite.visible = false
-			
+
+func _process(delta):
+	match happy_state:
+		HAPPINESS.HAPPY:
+			if (self.item):
+				self.item.visible = false
+		HAPPINESS.NEUTRAL:
+			if (self.item):
+				self.item.visible = true
+				self.item.material.set_shader_param("jitter", 0.0)
+		HAPPINESS.VERY_UNHAPPY:
+			if (self.item):
+				self.item.visible = true
+				self.item.material.set_shader_param("jitter", 1.0)
 
 # tell the child to follow the player (or line of kids)
 func follow_node(node, z_val):
-	get_tree().get_class()
-	
 	world_state = STATE.FOLLOWING_PLAYER
 	parent_node = node
 	z_index = z_val
+
+func give_item(item):
+	if item == null:
+		return false
+	if item.type == self.item.type:
+		world_state = STATE.FOLLOWING_PLAYER
+		happy_state = HAPPINESS.HAPPY
+		return true
+	return false	
 
 func set_item(item):
 	if (self.item):
@@ -97,6 +117,7 @@ func set_item(item):
 		item.position = $Anchor.position
 		add_child(item)
 		self.item = item
+	self.item.material.set_shader_param("jitter", 0.0)
 # 
 func spawn_kid(item):
 	current_desire = item.type

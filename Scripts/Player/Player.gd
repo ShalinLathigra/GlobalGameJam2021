@@ -93,9 +93,18 @@ func remove_child(child_name):
 
 func _on_Area2D_body_entered(body):
 	if "Child" in body.name:
-		if !children.has(body.name):
-			children[body.name] = body
-			link_children()
+		if body.happy_state != Child.HAPPINESS.HAPPY:
+			# give item to child
+			if body.give_item(self.item):
+				# remove item from player
+				var player_item = self.item
+				player_item.queue_free()
+				self.item = null
+				
+				if !children.has(body.name):
+					children[body.name] = body
+					link_children()
+
 func set_item(item):
 	if (self.item):
 		self.item.type = item.type
@@ -108,7 +117,6 @@ func set_item(item):
 		
 
 func is_holding(type):
-	print(type)
 	if (self.item):
 		return self.item.type == type
 	return false

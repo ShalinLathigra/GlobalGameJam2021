@@ -17,6 +17,7 @@ void vertex(){
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
 shader = SubResource( 1 )
 shader_param/jitter = 0.7
 shader_param/jitter_scale = 5.67
