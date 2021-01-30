@@ -15,10 +15,6 @@ var direction = PLAYER_DIR.LEFT
 var children = {}
 var moving = false
 
-func _ready():
-	randomize()
-	pass
-
 onready var item = null
 	
 func _physics_process(_delta):
@@ -122,11 +118,12 @@ func _give_child_item():
 
 func _on_Area2D_body_entered(body):
 	if "Child" in body.name:
-		if !children.has(body.name):
-			children[body.name] = body
-			link_children()
-			body.follow_me()
-			_give_child_item()
+		if body.world_state != Child.STATE.NOT_SPAWNED:
+			if !children.has(body.name):
+				children[body.name] = body
+				link_children()
+				body.follow_me()
+				_give_child_item()
 
 func set_item(item):
 	if (self.item):
