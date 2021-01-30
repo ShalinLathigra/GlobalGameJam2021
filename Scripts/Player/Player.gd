@@ -15,6 +15,8 @@ func _ready():
 	randomize()
 	pass
 
+onready var item = null
+	
 func _physics_process(_delta):
 	var dir = Vector2()
 	moving = false
@@ -58,14 +60,26 @@ func _physics_process(_delta):
 	
 	if vel.length() > max_speed:
 		vel = vel.normalized() * max_speed
-
+		
 	vel = move_and_slide(vel)
+	
 	if !moving:
 		vel = (1 - friction) * vel
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	get_node("AnimatedSprite").play_anim(anim, direction)
+	if (self.item):
+		if (vel.x < 0):
+			self.item.position.x = -1.0 * $Anchor.position.x
+		else:
+			self.item.position.x = $Anchor.position.x
+			
+		if (vel.length_squared() == 0.0):
+			self.item.material.set_shader_param("jitter", 0.0)
+		else:
+			self.item.material.set_shader_param("jitter", vel.length() / run_speed)
+			
 	
 func link_children():
 	var z_val = 25 # max number of children
@@ -82,8 +96,19 @@ func _on_Area2D_body_entered(body):
 		if !children.has(body.name):
 			children[body.name] = body
 			link_children()
-
 func set_item(item):
-	item.position = Vector2(10, 0.0)
-	add_child(item)
-	print(item)
+	if (self.item):
+		self.item.type = item.type
+		self.item.texture = item.texture
+		self.item.scale = item.scale
+	else:
+		item.position = $Anchor.position
+		add_child(item)
+		self.item = item
+		
+
+func is_holding(type):
+	print(type)
+	if (self.item):
+		return self.item.type == type
+	return false

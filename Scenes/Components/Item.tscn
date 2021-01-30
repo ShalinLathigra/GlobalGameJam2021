@@ -1,6 +1,31 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Item.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Items/Flowers.png" type="Texture" id=2]
+
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float jitter : hint_range(0,1);
+uniform float jitter_scale : hint_range(5,10);
+uniform float jitter_period = 6.0;
+
+const float PI = 3.14159265;
+
+void vertex(){
+	VERTEX.y += (sin(TIME * PI * jitter_period) * jitter) * jitter_scale;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/jitter = 0.7
+shader_param/jitter_scale = 5.67
+shader_param/jitter_period = 9.0
 
 [node name="Item" type="Sprite"]
+material = SubResource( 2 )
+position = Vector2( 0, 0.187286 )
+z_index = 5
+texture = ExtResource( 2 )
 script = ExtResource( 1 )

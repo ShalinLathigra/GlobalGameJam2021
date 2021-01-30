@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Flowers.png-25ba2031fb1910ba5d127e128010a02c.stex"
+path="res://.import/Circle_Shadow.png-a62fc6da4760cf966f59c8fc2303a8d9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Imports/Items/Flowers.png"
-dest_files=[ "res://.import/Flowers.png-25ba2031fb1910ba5d127e128010a02c.stex" ]
+source_file="res://Imports/Circle_Shadow.png"
+dest_files=[ "res://.import/Circle_Shadow.png-a62fc6da4760cf966f59c8fc2303a8d9.stex" ]
 
 [params]
 
