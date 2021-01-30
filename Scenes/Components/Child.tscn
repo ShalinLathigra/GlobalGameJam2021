@@ -4,6 +4,7 @@
 [ext_resource path="res://Resources/Characters/Child1.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://Resources/Child.shader" type="Shader" id=3]
 
+
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 3 )
