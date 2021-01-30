@@ -1,8 +1,8 @@
 extends KinematicBody2D
 class_name Child
 
-const child_a = preload("res://Resources/Child1.tres")
-const child_b = preload("res://Resources/Child2.tres")
+const child_a = preload("res://Resources/Characters/Child1.tres")
+const child_b = preload("res://Resources/Characters/Child2.tres")
 
 enum HAPPINESS {HAPPY, NEUTRAL, VERY_UNHAPPY}
 enum STATE {NOT_SPAWNED, IDLE, FOLLOWING_PLAYER, RUNNING}
@@ -163,7 +163,8 @@ func _process(delta):
 		STATE.NOT_SPAWNED:
 			pass
 		_:
-			self.item.visible = false
+			if (self.item):
+				self.item.visible = false
 
 func follow_me():
 	world_state = STATE.FOLLOWING_PLAYER
