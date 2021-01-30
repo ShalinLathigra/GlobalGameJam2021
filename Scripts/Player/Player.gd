@@ -91,6 +91,9 @@ func remove_child(child_name):
 	children.erase(child_name)
 	link_children()
 
+func bug_player():
+	_give_child_item()
+
 func _give_child_item():
 	if self.item == null:
 		return

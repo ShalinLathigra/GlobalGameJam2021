@@ -92,6 +92,11 @@ func _tick_time(delta):
 				happy_state = HAPPINESS.VERY_UNHAPPY
 			HAPPINESS.VERY_UNHAPPY:
 				print("UH_OH") # TODO
+	match happy_state:
+		HAPPINESS.HAPPY:
+			pass
+		_:
+			get_node("../Player").bug_player()
 
 func _update_item_sprite():
 	match happy_state:
@@ -112,7 +117,7 @@ func _update_item_sprite():
 			if (self.item):
 				self.item.visible = true
 				self.item.material.set_shader_param("jitter", 1.0)
-				self.item.material.set_shader_param("jitter_period", 1.2 + timer/tick_time)
+				self.item.material.set_shader_param("jitter_period", 0.2 + timer/tick_time)
 				self.item.material.set_shader_param("color_red", 1.0)
 
 func _process(delta):
