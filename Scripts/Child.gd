@@ -107,6 +107,7 @@ func _update_item_sprite():
 				else:
 					self.item.material.set_shader_param("jitter", 0.0)
 				self.item.material.set_shader_param("jitter_period", 0.2 + timer/tick_time)
+				self.item.material.set_shader_param("color_red", 0.0)
 		HAPPINESS.VERY_UNHAPPY:
 			if (self.item):
 				self.item.visible = true
