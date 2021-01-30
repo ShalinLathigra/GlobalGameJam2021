@@ -1,12 +1,16 @@
 extends KinematicBody2D
+class_name Player
+
+enum PLAYER_STATE {WALK, RUN, IDLE}
+enum PLAYER_DIR {LEFT, RIGHT}
 
 export var run_speed = 600
 export var accel = 300
 var friction = 0.9
 var vel = Vector2()
 
-var anim = "IDLE"
-var direction = 'L'
+var anim = PLAYER_STATE.IDLE
+var direction = PLAYER_DIR.LEFT
 
 var children = {}
 var moving = false
@@ -23,37 +27,29 @@ func _physics_process(_delta):
 	
 	if Input.is_action_pressed("UP"):
 		dir.y = -1
-		#if vel.y < 0: 
-		#	vel.y = -vel.y
 		moving = true
 	elif Input.is_action_pressed("DOWN"):
 		dir.y = 1
-		#if vel.y > 0: 
-		#	vel.y = -vel.y
 		moving = true
 	if Input.is_action_pressed("LEFT"):
 		dir.x = -1
-		#if vel.x < 0: 
-		#	vel.x = -vel.y
-		direction = 'L'
+		direction = PLAYER_DIR.LEFT
 		moving = true
 	elif Input.is_action_pressed("RIGHT"):
 		dir.x = 1
-		#if vel.x > 0: 
-		#	vel.x = -vel.y
-		direction = 'R'
+		direction = PLAYER_DIR.RIGHT
 		moving = true
 	
 	var max_speed = run_speed
 	
 	if moving:
 		if Input.is_action_pressed("WALK"):
-			anim = "WALK"
+			anim = PLAYER_STATE.WALK
 			max_speed *= 0.6
 		else:
-			anim = "RUN"
+			anim = PLAYER_STATE.RUN
 	else:
-		anim = "IDLE"
+		anim = PLAYER_STATE.IDLE
 		
 	dir = dir.normalized()
 	vel += dir * accel
