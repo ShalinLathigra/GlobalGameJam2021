@@ -1,8 +1,8 @@
 extends AnimatedSprite
 
 export (Color) var chat_color = Color.white
-export var text_fade_in = 1.0
-export var text_fade_out = 1.5
+export var text_fade_in = 2.0
+export var text_fade_out = 3.0
 	
 func _set_text(text):
 	$TextBox/TextBox.text = text

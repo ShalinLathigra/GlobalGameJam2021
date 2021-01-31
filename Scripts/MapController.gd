@@ -58,7 +58,7 @@ func _update_map():
 	var new_scene = scene_list[scene_order[i]].instance()
 	if (scene_order[i] == scene_indices.CUTSCENE):
 		get_node(player).visible = false
-		new_scene.set_lines(cs)
+		new_scene.set_scene(cs)
 	elif (scene_order[i] == scene_indices.WIN):
 		get_node(player).visible = false
 	else:
