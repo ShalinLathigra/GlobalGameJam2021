@@ -30,7 +30,6 @@ func set_scene(k):
 		}
 		
 	if (self.scenes.has(i)):
-		print(self.scenes)
 		scene = self.scenes[i]
 		lines = scene["Lines"]
 		
@@ -59,11 +58,8 @@ func _process(delta):
 			if (!playing):
 				start_timer = max (start_timer - delta, 0.0)
 				if (start_timer <= 0.0):
-					print(lines[j])
-					#print(lines[j]["Node"])
 					current_node = get_node(lines[j]["Node"])
 					if (current_node):
-						print("F")
 						current_node._set_text(lines[j]["Line"])
 						start_timer = max_start_timer
 						playing = true

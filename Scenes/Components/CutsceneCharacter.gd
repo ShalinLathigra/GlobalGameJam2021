@@ -7,7 +7,6 @@ export var text_fade_out = 3.0
 func _set_text(text):
 	$TextBox/TextBox.text = text
 	$TextBox/TextBox.visible_characters = 0
-	print("%s: %s" % [name, $TextBox/TextBox.text])
 	active = true
 	
 func _ready():
