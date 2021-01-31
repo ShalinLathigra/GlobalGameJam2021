@@ -10,11 +10,15 @@ onready var image_map = {
 	item_type.FLOWERS: preload("res://Resources/Items/Flowers.png"),
 	item_type.ICECREAM: preload("res://Resources/Items/IceCream.tres"),
 	item_type.MILK: preload("res://Resources/Items/Milk.tres"),
-	item_type.PIZZA: preload("res://Resources/Items/Pizza.tres")
+	item_type.PIZZA: preload("res://Resources/Items/Pizza.tres"),
+	item_type.BANANA: preload("res://Resources/Items/Banana.tres"),
+	item_type.BURGER: preload("res://Resources/Items/Burger.tres"),
+	item_type.DONUT: preload("res://Resources/Items/Donut.tres"),
+	item_type.EGG: preload("res://Resources/Items/Egg.tres")
 }
 const item_base = preload("res://Scenes/Components/Item.tscn")
 
-enum item_type {APPLE, CARROT, CHEESE, CHOCOLATE, FLOWERS, ICECREAM, MILK, PIZZA}
+enum item_type {APPLE, CARROT, CHEESE, CHOCOLATE, FLOWERS, ICECREAM, MILK, PIZZA, BANANA, BURGER, DONUT, EGG}
 
 export (item_type) var type
 export (Vector2) var override_scale = Vector2(1.0, 1.0)
