@@ -7,11 +7,6 @@ const scene_list = [
 	preload("res://Scenes/Maps/Map_02.tscn"),
 	preload("res://Scenes/Maps/Map_03.tscn"),
 	preload("res://Scenes/Maps/Map_04.tscn"),
-	#preload("res://Scenes/Maps/Map_11.tscn")
-	#preload("res://Scenes/Maps/Map_02.tscn")
-	#preload("res://Scenes/Maps/Map_12.tscn")
-	#preload("res://Scenes/Maps/Map_03.tscn")
-	#preload("res://Scenes/Maps/Map_13.tscn")
 	preload("res://Scenes/Maps/WIN.tscn"),
 	]
 
@@ -21,15 +16,16 @@ enum scene_indices {CUTSCENE, MAP_01, MAP_02, MAP_03, MAP_04, WIN}
 var i = 0
 
 var scene_order = [
-	scene_indices.CUTSCENE,
+	scene_indices.CUTSCENE,	# Morn 1
 	scene_indices.MAP_01,
-	scene_indices.CUTSCENE,
+	scene_indices.CUTSCENE, #Lunch 1
 	scene_indices.MAP_02,
-	scene_indices.CUTSCENE,
+	scene_indices.CUTSCENE, # End 1
+	scene_indices.CUTSCENE, # Morn 2
 	scene_indices.MAP_03,
-	scene_indices.CUTSCENE,
+	scene_indices.CUTSCENE, # Lunch 2
 	scene_indices.MAP_04,
-	scene_indices.CUTSCENE,
+	scene_indices.CUTSCENE, # End 2
 	scene_indices.WIN
 	]
 
@@ -111,7 +107,10 @@ func _ready_kids():
 func _input(event):
 	if (Input.is_action_just_pressed("next_map")):
 		i = min(scene_order.size() - 1, i + 1)
+		if (scene_order[i] == scene_indices.CUTSCENE):
+			cs += 1
 		_update_map()
+		
 
 func _spawn_rand_kid():
 	var item_type = available_items[randi() % available_items.size()]
