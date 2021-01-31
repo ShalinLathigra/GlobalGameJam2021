@@ -671,9 +671,11 @@ size = 32
 font_data = ExtResource( 38 )
 
 [node name="Map_01" type="Node2D"]
+position = Vector2( -46.7195, -44.0497 )
 script = ExtResource( 1 )
-KID_NEEDINESS = 20
-LEVEL_MAX_TIME = 60
+KID_NEEDINESS = 18
+LEVEL_MAX_TIME = 80
+SPAWN_TIME = 20
 
 [node name="Floor" type="TileMap" parent="."]
 material = SubResource( 2 )
@@ -718,7 +720,7 @@ tile_data = PoolIntArray( -1441758, 536870915, 0, -1441757, 536870913, 0, -14417
 z_index = 4
 
 [node name="Exit01" type="Area2D" parent="Exits"]
-position = Vector2( 2668.12, 1325.33 )
+position = Vector2( 2697.49, 1364.04 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Exit01"]
 rotation = 1.11011
@@ -729,7 +731,7 @@ position = Vector2( -108.49, -409.552 )
 scale = Vector2( 3.05748, 3.05748 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 16
+frame = 9
 playing = true
 __meta__ = {
 "_editor_description_": "q"
@@ -740,7 +742,7 @@ position = Vector2( -107.896, -345.003 )
 scale = Vector2( 3.10709, 3.10709 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 16
+frame = 9
 playing = true
 flip_h = true
 __meta__ = {

@@ -1,4 +1,5 @@
 extends Node2D
+class_name MapController
 
 const scene_list = [
 	preload("res://Scenes/Maps/CutSceneMap.tscn"),
@@ -113,6 +114,9 @@ func _spawn_rand_kid():
 				k.spawn_kid(item)
 				return
 
+func get_current_scene_type():
+	return scene_order[i]
+
 var game_over = false
 var progress = false
 func _process(delta):
@@ -159,7 +163,13 @@ func _process(delta):
 						_spawn_rand_kid()
 						kid_spawn_timer = 0.0
 				if (level_timer > current_scene.LEVEL_MAX_TIME):
-					progress = true
+					if (kids_lost + $Player.children.size() == current_scene.MAX_KIDS):
+						progress = true
+					else:
+						$AudioSFX.play_sfx(AudioSFX.sfx.LOSE)
+						game_over = true
+						$Player/Camera2D/FadeLabel/NotFound.visible = true
+						$Player/Camera2D/FadeLabel/Label.visible = false
 				else:
 					level_timer += delta
 	else:
@@ -167,20 +177,28 @@ func _process(delta):
 			fade_timer = min(fade_timer + delta, 1.0)
 			$Fade.modulate.a = fade_timer
 			if (game_over):
+				$Player.freeze()
 				$Player/Camera2D/FadeLabel.modulate.a = fade_timer
 		else:
 			if (progress):
 				i += 1
+				$AudioSFX.play_sfx(AudioSFX.sfx.WIN)
 				if (scene_order[i] == scene_indices.CUTSCENE):
 					cs += 1
 			level_timer = 0.0
 			game_over = false
 			progress = false
+			kids_lost = 0
 			_update_map()
+			$Player.unfreeze()
 
 func lose_child(child):
+	$AudioSFX.play_sfx(AudioSFX.sfx.CHILD_LOST)
 	kids_lost += 1
 	kids.erase(child)
 	print(kids_lost)
 	if (kids_lost >= 2):
+		$AudioSFX.play_sfx(AudioSFX.sfx.LOSE)
 		game_over = true
+		$Player/Camera2D/FadeLabel/NotFound.visible = false
+		$Player/Camera2D/FadeLabel/Label.visible = true
