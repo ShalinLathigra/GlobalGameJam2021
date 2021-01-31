@@ -134,8 +134,10 @@ func _on_Area2D_body_entered(body):
 				link_children()
 				body.follow_me()
 				_give_child_item()
+				get_node("../AudioSFX").play_sfx(AudioSFX.sfx.CHILD_FOUND)
 
 func set_item(item):
+	get_node("../AudioSFX").play_sfx(AudioSFX.sfx.GET_ITEM)
 	if (self.item):
 		self.item.type = item.type
 		self.item.texture = item.texture

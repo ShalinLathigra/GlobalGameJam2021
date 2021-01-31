@@ -166,6 +166,7 @@ func _process(delta):
 					if (kids_lost + $Player.children.size() == current_scene.MAX_KIDS):
 						progress = true
 					else:
+						$AudioSFX.play_sfx(AudioSFX.sfx.LOSE)
 						game_over = true
 						$Player/Camera2D/FadeLabel/NotFound.visible = true
 						$Player/Camera2D/FadeLabel/Label.visible = false
@@ -181,6 +182,7 @@ func _process(delta):
 		else:
 			if (progress):
 				i += 1
+				$AudioSFX.play_sfx(AudioSFX.sfx.WIN)
 				if (scene_order[i] == scene_indices.CUTSCENE):
 					cs += 1
 			level_timer = 0.0
@@ -191,10 +193,12 @@ func _process(delta):
 			$Player.unfreeze()
 
 func lose_child(child):
+	$AudioSFX.play_sfx(AudioSFX.sfx.CHILD_LOST)
 	kids_lost += 1
 	kids.erase(child)
 	print(kids_lost)
 	if (kids_lost >= 2):
+		$AudioSFX.play_sfx(AudioSFX.sfx.LOSE)
 		game_over = true
 		$Player/Camera2D/FadeLabel/NotFound.visible = false
 		$Player/Camera2D/FadeLabel/Label.visible = true
