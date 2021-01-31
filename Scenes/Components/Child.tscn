@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Child.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Child1.tres" type="SpriteFrames" id=2]
@@ -13,6 +13,8 @@ shader_param/gender = false
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 11.8545
 height = 0.0
+
+[sub_resource type="CircleShape2D" id=3]
 
 [node name="Child" type="KinematicBody2D"]
 position = Vector2( -193.5, 145 )
@@ -33,3 +35,10 @@ shape = SubResource( 2 )
 
 [node name="Anchor" type="Node2D" parent="."]
 position = Vector2( 32.0918, -41.0586 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.707901, 47.9016 )
+shape = SubResource( 3 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
