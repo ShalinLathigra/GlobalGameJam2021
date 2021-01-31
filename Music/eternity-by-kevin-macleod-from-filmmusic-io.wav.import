@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/eternity-by-kevin-macleod-from-filmmusic-io.wav-de3d4b2c6d309d68f79a7225f424d5c1.sample"
+
+[deps]
+
+source_file="res://Music/eternity-by-kevin-macleod-from-filmmusic-io.wav"
+dest_files=[ "res://.import/eternity-by-kevin-macleod-from-filmmusic-io.wav-de3d4b2c6d309d68f79a7225f424d5c1.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

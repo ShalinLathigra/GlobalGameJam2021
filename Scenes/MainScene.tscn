@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Imports/VT323-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/UIController.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/AudioSFX.gd" type="Script" id=8]
+[ext_resource path="res://Music/eternity-by-kevin-macleod-from-filmmusic-io.wav" type="AudioStream" id=9]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -145,3 +146,8 @@ texture = ExtResource( 2 )
 
 [node name="AudioSFX" type="AudioStreamPlayer" parent="."]
 script = ExtResource( 8 )
+
+[node name="AudioBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -7.313
+autoplay = true
