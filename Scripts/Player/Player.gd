@@ -16,10 +16,20 @@ var children = {}
 var moving = false
 
 onready var item = null
-	
+var is_frozen = false
+
+func freeze():
+	is_frozen = true
+
+func unfreeze():
+	is_frozen = false
+
 func _physics_process(_delta):
 	var dir = Vector2()
 	moving = false
+	
+	if is_frozen:
+		return
 	
 	if Input.is_action_pressed("UP"):
 		dir.y = -1
@@ -124,8 +134,10 @@ func _on_Area2D_body_entered(body):
 				link_children()
 				body.follow_me()
 				_give_child_item()
+				get_node("../AudioSFX").play_sfx(AudioSFX.sfx.CHILD_FOUND)
 
 func set_item(item):
+	get_node("../AudioSFX").play_sfx(AudioSFX.sfx.GET_ITEM)
 	if (self.item):
 		self.item.type = item.type
 		self.item.texture = item.texture

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/child_found.wav-8102051c38337a4360449d781635351c.sample"
+
+[deps]
+
+source_file="res://SFX/child_found.wav"
+dest_files=[ "res://.import/child_found.wav-8102051c38337a4360449d781635351c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

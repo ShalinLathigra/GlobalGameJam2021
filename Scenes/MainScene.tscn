@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Scenes/Components/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Maps/Map_01.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Imports/VT323-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scenes/UIController.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/AudioSFX.gd" type="Script" id=8]
+[ext_resource path="res://Music/eternity-by-kevin-macleod-from-filmmusic-io.wav" type="AudioStream" id=9]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -19,6 +22,12 @@ shader = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 48
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 6 )
 
 [node name="Node2D" type="Node2D"]
@@ -63,6 +72,66 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="NotFound" type="Label" parent="Player/Camera2D/FadeLabel"]
+margin_left = -381.555
+margin_top = -86.7182
+margin_right = 397.445
+margin_bottom = 118.282
+custom_fonts/font = SubResource( 3 )
+text = "You didn't find all the children...... 
+One more try!
+
+(Press Q to quit at any time)
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UI" type="Control" parent="Player/Camera2D"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time" type="Label" parent="Player/Camera2D/UI"]
+margin_left = 55.6887
+margin_top = -106.658
+margin_right = 135.689
+margin_bottom = -86.6578
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Time: 120s"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lost" type="Label" parent="Player/Camera2D/UI"]
+margin_left = -50.0252
+margin_top = -105.714
+margin_right = 29.9748
+margin_bottom = -85.7139
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Lost: 0/2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Found" type="Label" parent="Player/Camera2D/UI"]
+margin_left = -161.402
+margin_top = -103.826
+margin_right = -81.4025
+margin_bottom = -83.8262
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Found: 0/5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="test_map" parent="." instance=ExtResource( 5 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -74,3 +143,11 @@ position = Vector2( 1.41418, -1.76055 )
 scale = Vector2( 100, 100 )
 z_index = 4095
 texture = ExtResource( 2 )
+
+[node name="AudioSFX" type="AudioStreamPlayer" parent="."]
+script = ExtResource( 8 )
+
+[node name="AudioBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -7.313
+autoplay = true
