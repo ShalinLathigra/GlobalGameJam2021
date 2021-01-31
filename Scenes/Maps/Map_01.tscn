@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Scripts/TileMap2.gd" type="Script" id=1]
 [ext_resource path="res://Resources/TileMaps/oga_furnishings.tres" type="TileSet" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://Imports/Map/OGA_Tiles/Red/Floor/105.svg" type="Texture" id=35]
 [ext_resource path="res://Imports/Map/OGA_Tiles/Red/Floor/106.svg" type="Texture" id=36]
 [ext_resource path="res://Scenes/Components/Child.tscn" type="PackedScene" id=37]
+[ext_resource path="res://Imports/VT323-Regular.ttf" type="DynamicFontData" id=38]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -665,6 +666,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="DynamicFont" id=36]
+size = 32
+font_data = ExtResource( 38 )
+
 [node name="Map_01" type="Node2D"]
 script = ExtResource( 1 )
 KID_NEEDINESS = 20
@@ -724,7 +729,7 @@ position = Vector2( -108.49, -409.552 )
 scale = Vector2( 3.05748, 3.05748 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 19
+frame = 16
 playing = true
 __meta__ = {
 "_editor_description_": "q"
@@ -735,7 +740,7 @@ position = Vector2( -107.896, -345.003 )
 scale = Vector2( 3.10709, 3.10709 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 19
+frame = 16
 playing = true
 flip_h = true
 __meta__ = {
@@ -806,3 +811,16 @@ z_index = 3
 z_as_relative = false
 type = 6
 override_scale = Vector2( 2, 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -392.289
+margin_top = -131.997
+margin_right = 179.711
+margin_bottom = -26.9972
+custom_fonts/font = SubResource( 36 )
+text = "WASD to Move!
+Walk by a lost child and they'll follow you.
+Keep them happy or they might run away"
+__meta__ = {
+"_edit_use_anchors_": false
+}
