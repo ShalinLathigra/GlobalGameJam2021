@@ -13,16 +13,18 @@ const scene_list = [
 	preload("res://Scenes/Maps/WIN.tscn"),
 	]
 
-enum scene_indices {CUTSCENE, MORNING_01, MORNING_02, WIN}
+enum scene_indices {CUTSCENE, MAP_01, MAP_02, MAP_03, WIN}
 #export (scene_indices) var i
 
 var i = 0
 
 var scene_order = [
 	scene_indices.CUTSCENE,
-	scene_indices.MORNING_01,
+	scene_indices.MAP_01,
 	scene_indices.CUTSCENE,
-	scene_indices.MORNING_02,
+	scene_indices.MAP_02,
+	scene_indices.CUTSCENE,
+	scene_indices.MAP_03,
 	scene_indices.CUTSCENE,
 	scene_indices.WIN
 	]
