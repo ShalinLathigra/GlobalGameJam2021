@@ -675,7 +675,7 @@ font_data = ExtResource( 40 )
 [node name="Map_01" type="Node2D"]
 position = Vector2( -46.7195, -44.0497 )
 script = ExtResource( 1 )
-KID_NEEDINESS = 18
+MAX_KIDS = 4
 LEVEL_MAX_TIME = 80
 SPAWN_TIME = 20
 
@@ -734,7 +734,7 @@ position = Vector2( -108.49, -409.552 )
 scale = Vector2( 3.05748, 3.05748 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 20
+frame = 17
 playing = true
 __meta__ = {
 "_editor_description_": "q"
@@ -745,7 +745,7 @@ position = Vector2( -107.896, -345.003 )
 scale = Vector2( 3.10709, 3.10709 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 20
+frame = 17
 playing = true
 flip_h = true
 __meta__ = {

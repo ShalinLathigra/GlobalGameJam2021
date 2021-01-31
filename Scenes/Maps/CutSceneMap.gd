@@ -35,11 +35,9 @@ func set_scene(k):
 		
 		get_node(CC).position = Vector2(scene["Positions"]["CC"].x,scene["Positions"]["CC"].y)
 		get_node(MC).position = Vector2(scene["Positions"]["MC"].x,scene["Positions"]["MC"].y)
-		get_node(OC).position = Vector2(scene["Positions"]["OC"].x,scene["Positions"]["OC"].y)
 		
 		get_node(CC).z_index = scene["Positions"]["CC"].z
 		get_node(MC).z_index = scene["Positions"]["MC"].z
-		get_node(OC).z_index = scene["Positions"]["OC"].z
 	else:
 		scene = null
 		lines = null
