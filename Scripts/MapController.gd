@@ -54,31 +54,30 @@ var cs = 0
 func _update_map():
 	if (get_node(scene_path)):
 		get_node(scene_path).queue_free()
-
+	
 	var new_scene = scene_list[scene_order[i]].instance()
 	if (scene_order[i] == scene_indices.CUTSCENE):
 		get_node(player).visible = false
-		new_scene.set_lines(cs)
+		new_scene.set_scene(cs)
 	elif (scene_order[i] == scene_indices.WIN):
 		get_node(player).visible = false
 	else:
 		get_node(player).visible = true
 		get_node(player).position = Vector2(0,0)
-
+		
 	add_child(new_scene)
 	scene_path = new_scene.name
 	current_scene = new_scene
-
+	
 	if (get_node(cam)):
 		get_node(cam).set_walls(new_scene)
-
+	
 	available_items = []
 	for x in new_scene.get_children():
 		if "Shop" in x.name:
 			for y in x.get_children():
 				if "Shop" in y.name:
 					available_items.push_back(y.type)
-
 	_free_kids()
 	_ready_kids()
 
@@ -155,12 +154,10 @@ func _process(delta):
 			# kids should spawn during first x seconds of level
 			if (scene_order[i] != scene_indices.WIN):
 				var kid_wait_time = (current_scene.SPAWN_TIME / current_scene.MAX_KIDS)
-
 				if kids_alive < current_scene.MAX_KIDS:
 					if kid_spawn_timer > kid_wait_time:
 						_spawn_rand_kid()
 						kid_spawn_timer = 0.0
-
 				if (level_timer > current_scene.LEVEL_MAX_TIME):
 					progress = true
 				else:
