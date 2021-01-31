@@ -723,7 +723,7 @@ position = Vector2( -108.49, -409.552 )
 scale = Vector2( 3.05748, 3.05748 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 23
+frame = 15
 playing = true
 __meta__ = {
 "_editor_description_": "q"
@@ -734,7 +734,7 @@ position = Vector2( -107.896, -345.003 )
 scale = Vector2( 3.10709, 3.10709 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 23
+frame = 15
 playing = true
 flip_h = true
 __meta__ = {
