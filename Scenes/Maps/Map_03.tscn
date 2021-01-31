@@ -254,7 +254,7 @@ type = 7
 override_scale = Vector2( 2, 2 )
 
 [node name="CoffeePoint" parent="Shops" instance=ExtResource( 4 )]
-position = Vector2( -1427.97, -809.151 )
+position = Vector2( -1427.97, -810.339 )
 z_index = 3
 z_as_relative = false
 type = 12
@@ -463,7 +463,7 @@ position = Vector2( -107.109, -406.33 )
 scale = Vector2( 3.3843, 3.3843 )
 z_index = 4
 frames = SubResource( 30 )
-frame = 16
+frame = 4
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -471,7 +471,7 @@ position = Vector2( -106.77, -347.459 )
 scale = Vector2( 3.29134, 3.29134 )
 z_index = 4
 frames = SubResource( 30 )
-frame = 16
+frame = 4
 playing = true
 flip_h = true
 
