@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Imports/VT323-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Imports/ChatBubble.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+outline_size = 1
+outline_color = Color( 0.192157, 0.192157, 0.192157, 1 )
+font_data = ExtResource( 1 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -87.0462
+margin_top = -56.7957
+margin_right = 100.954
+margin_bottom = 53.2043
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = -17.4355
+margin_top = 56.5972
+margin_right = 170.564
+margin_bottom = 166.597
+rect_scale = Vector2( 0.191532, 0.148235 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+margin_left = -5.15126
+margin_top = 82.4256
+margin_right = 182.849
+margin_bottom = 192.426
+rect_scale = Vector2( 0.0484541, 0.0375008 )
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextBox" type="RichTextLabel" parent="."]
+margin_left = -80.0462
+margin_top = -50.5151
+margin_right = 93.9538
+margin_bottom = 47.4849
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/normal_font = SubResource( 1 )
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

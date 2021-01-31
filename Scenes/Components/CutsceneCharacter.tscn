@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Components/CutsceneCharacter.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Characters/female1_spriteframes.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://Scenes/Components/TextBox.tscn" type="PackedScene" id=3]
+
+[node name="Character" type="AnimatedSprite"]
+position = Vector2( 130.719, -102.069 )
+z_index = 500
+frames = ExtResource( 2 )
+animation = "idle"
+script = ExtResource( 1 )
+
+[node name="TextBox" parent="." instance=ExtResource( 3 )]
+anchor_bottom = 0.5
+margin_left = 2.65952
+margin_top = -116.344
+margin_right = -68.3405
+margin_bottom = -114.344

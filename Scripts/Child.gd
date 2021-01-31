@@ -1,8 +1,8 @@
 extends KinematicBody2D
 class_name Child
 
-const child_a = preload("res://Resources/Child1.tres")
-const child_b = preload("res://Resources/Child2.tres")
+const child_a = preload("res://Resources/Characters/Child1.tres")
+const child_b = preload("res://Resources/Characters/Child2.tres")
 
 enum HAPPINESS {HAPPY, NEUTRAL, VERY_UNHAPPY}
 enum STATE {NOT_SPAWNED, IDLE, FOLLOWING_PLAYER, RUNNING}
@@ -90,7 +90,7 @@ func _run_to_exit():
 	var player = get_node("/root/Node2D/Player")
 	player.remove_child(self.name)
 	
-	var exit_position = get_node("/root/Node2D").current_map.get_nearest_exit(position)	
+	var exit_position = get_node("/root/Node2D").current_scene.get_nearest_exit(position)	
 
 	if (player.position - position).length() < run_dist:
 		run_from_player = true
@@ -163,7 +163,8 @@ func _process(delta):
 		STATE.NOT_SPAWNED:
 			pass
 		_:
-			self.item.visible = false
+			if (self.item):
+				self.item.visible = false
 
 func follow_me():
 	world_state = STATE.FOLLOWING_PLAYER
@@ -204,6 +205,8 @@ func spawn_kid(item):
 
 func _on_Area2D_area_entered(area):
 	if "Exit" in area.name:
+		print("%s : in state %s" % [name, world_state])
+	if "Exit" in area.name and world_state == STATE.RUNNING:	
 		get_node("/root/Node2D").lose_child(self)
 		$AnimatedSprite.visible = false
 		queue_free()
