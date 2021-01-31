@@ -23,9 +23,9 @@ __meta__ = {
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
 margin_left = 40.2859
-margin_top = 9.68628
+margin_top = 10.6291
 margin_right = 644.286
-margin_bottom = 382.686
+margin_bottom = 383.629
 size_flags_horizontal = 3
 custom_fonts/normal_font = SubResource( 1 )
 text = "Congratulations!!! 
@@ -36,7 +36,7 @@ Your Manager is looking forward to seeing more of your best work.
 
 
 Great job, You beat the game!!! 
-[], [], and Darkclaw1 hope you enjoyed!
+Kataluo, D, and Darkclaw1 hope you enjoyed!
 Press Q to quit"
 __meta__ = {
 "_edit_use_anchors_": false
