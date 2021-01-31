@@ -17,7 +17,7 @@ func is_done():
 	return $TextBox/TextBox.visible_characters >= $TextBox/TextBox.get_total_character_count()
 	
 onready var time_of_last_char = OS.get_ticks_msec()
-var msec_to_next_char = 10
+var msec_to_next_char = 50
 
 var active = false
 
