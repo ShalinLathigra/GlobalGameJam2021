@@ -106,11 +106,10 @@ func _ready_kids():
 
 func _input(event):
 	if (Input.is_action_just_pressed("next_map")):
-		i = min(scene_order.size() - 1, i + 1)
 		if (scene_order[i] == scene_indices.CUTSCENE):
 			cs += 1
-		_update_map()
-		
+			i = min(scene_order.size() - 1, i + 1)
+			_update_map()
 
 func _spawn_rand_kid():
 	var item_type = available_items[randi() % available_items.size()]

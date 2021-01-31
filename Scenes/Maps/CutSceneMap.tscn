@@ -131,7 +131,7 @@ animations = [ {
 } ]
 
 [sub_resource type="DynamicFont" id=29]
-size = 32
+size = 28
 font_data = ExtResource( 7 )
 
 [node name="CutsceneMap" type="Node2D"]
@@ -191,22 +191,22 @@ current = true
 zoom = Vector2( 1.5, 1.5 )
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D"]
-margin_left = -497.0
-margin_top = 230.0
-margin_right = -204.0
-margin_bottom = 270.0
+margin_left = 265.127
+margin_top = 253.751
+margin_right = 503.127
+margin_bottom = 293.751
 color = Color( 0, 0, 0, 0.478431 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/ColorRect"]
-margin_left = 8.95233
-margin_top = -0.195824
-margin_right = 305.952
-margin_bottom = 47.8042
+margin_left = 22.0187
+margin_top = 0.992088
+margin_right = 319.018
+margin_bottom = 48.9921
 custom_fonts/normal_font = SubResource( 29 )
-text = "Press \"Space\" to Skip"
+text = "Press \"]\" to Skip"
 __meta__ = {
 "_edit_use_anchors_": false
 }
