@@ -49,6 +49,8 @@ var fade_timer = 0.0
 
 var level_timer = 0.0
 
+var cs = 0
+
 func _update_map():
 	if (get_node(scene_path)):
 		get_node(scene_path).queue_free()
@@ -56,6 +58,7 @@ func _update_map():
 	var new_scene = scene_list[scene_order[i]].instance()
 	if (scene_order[i] == scene_indices.CUTSCENE):
 		get_node(player).visible = false
+		new_scene.set_lines(cs)
 	else:
 		get_node(player).visible = true
 		get_node(player).position = Vector2(0,0)

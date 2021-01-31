@@ -160,7 +160,11 @@ height = 235.685
 script = ExtResource( 1 )
 MAX_KIDS = 6
 KID_NEEDINESS = 15
+<<<<<<< HEAD
 LEVEL_MAX_TIME = 75
+=======
+LEVEL_MAX_TIME = 45
+>>>>>>> be4c68c (Add mechanism for multiple Cutscene Dialogues)
 SPAWN_TIME = 25
 
 [node name="Floor" type="TileMap" parent="."]

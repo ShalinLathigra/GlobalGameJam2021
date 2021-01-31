@@ -667,9 +667,8 @@ animations = [ {
 
 [node name="Map_01" type="Node2D"]
 script = ExtResource( 1 )
-KID_NEEDINESS = 25
-LEVEL_MAX_TIME = 10
-SPAWN_TIME = 5
+KID_NEEDINESS = 20
+LEVEL_MAX_TIME = 50
 
 [node name="Floor" type="TileMap" parent="."]
 material = SubResource( 2 )
