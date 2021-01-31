@@ -63,9 +63,16 @@ func _update_map():
 	if (scene_order[i] == scene_indices.CUTSCENE):
 		get_node(player).visible = false
 		new_scene.set_scene(cs)
+		$CC.visible = false
 	elif (scene_order[i] == scene_indices.WIN):
 		get_node(player).visible = false
+		$CC.visible = false
 	else:
+		if (i > 2):
+			#SPAWN ORPHAN
+			# IF ORPHAN EXISTS, DELETE IT?
+			pass
+		$CC.visible = true
 		get_node(player).visible = true
 		get_node(player).position = Vector2(0,0)
 		

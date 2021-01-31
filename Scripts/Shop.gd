@@ -38,10 +38,11 @@ func get_item(type):
 
 
 func _on_Shop_body_entered(body):
-	if(type==item_type.COFFEE):
-		body.coffee_timer = body.max_coffee_timer
-	
-	elif (!body.is_holding(type)):
-		var item = get_item(type)
-		body.set_item(item)
+	if (body.name == "Player"):
+		if(type==item_type.COFFEE):
+			body.coffee_timer = body.max_coffee_timer
+		
+		elif (!body.is_holding(type)):
+			var item = get_item(type)
+			body.set_item(item)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/UIController.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/AudioSFX.gd" type="Script" id=8]
 [ext_resource path="res://Music/eternity-by-kevin-macleod-from-filmmusic-io.wav" type="AudioStream" id=9]
+[ext_resource path="res://Scenes/Components/CutsceneCharacter.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -37,7 +38,7 @@ scene_path = NodePath("test_map")
 player = NodePath("Player")
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1.01321, -35.8209 )
+position = Vector2( -94.0081, -305.327 )
 z_index = 100
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -136,10 +137,13 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
+[node name="CC" parent="." instance=ExtResource( 11 )]
+position = Vector2( -26.0792, -428.125 )
+
 [node name="Fade" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 2 )
-position = Vector2( -119.586, -70.7606 )
+position = Vector2( -110.01, -71.0942 )
 scale = Vector2( 100, 100 )
 z_index = 4095
 texture = ExtResource( 2 )
