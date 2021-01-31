@@ -160,7 +160,7 @@ height = 235.685
 script = ExtResource( 1 )
 MAX_KIDS = 6
 KID_NEEDINESS = 15
-LEVEL_MAX_TIME = 45
+LEVEL_MAX_TIME = 75
 SPAWN_TIME = 25
 
 [node name="Floor" type="TileMap" parent="."]
@@ -442,7 +442,7 @@ position = Vector2( -107.109, -406.33 )
 scale = Vector2( 3.3843, 3.3843 )
 z_index = 4
 frames = SubResource( 30 )
-frame = 24
+frame = 21
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -450,7 +450,7 @@ position = Vector2( -106.77, -347.459 )
 scale = Vector2( 3.29134, 3.29134 )
 z_index = 4
 frames = SubResource( 30 )
-frame = 24
+frame = 21
 playing = true
 flip_h = true
 

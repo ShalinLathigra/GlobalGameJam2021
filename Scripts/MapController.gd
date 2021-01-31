@@ -9,9 +9,10 @@ const scene_list = [
 	#preload("res://Scenes/Maps/Map_12.tscn")
 	#preload("res://Scenes/Maps/Map_03.tscn")
 	#preload("res://Scenes/Maps/Map_13.tscn")
+	preload("res://Scenes/Maps/WIN.tscn"),
 	]
 	
-enum scene_indices {CUTSCENE, MORNING_01, MORNING_02}
+enum scene_indices {CUTSCENE, MORNING_01, MORNING_02, WIN}
 #export (scene_indices) var i
 
 var i = 0
@@ -21,7 +22,8 @@ var scene_order = [
 	scene_indices.MORNING_01, 
 	scene_indices.CUTSCENE, 
 	scene_indices.MORNING_02, 
-	scene_indices.CUTSCENE
+	scene_indices.CUTSCENE,
+	scene_indices.WIN
 	]
 	
 export (NodePath) var cam;
@@ -54,10 +56,11 @@ func _update_map():
 	if (scene_order[i] == scene_indices.CUTSCENE):
 		get_node(player).visible = false
 		new_scene.set_lines(cs)
+	elif (scene_order[i] == scene_indices.WIN):
+		get_node(player).visible = false
 	else:
 		get_node(player).visible = true
 		get_node(player).position = Vector2(0,0)
-		print(new_scene.LEVEL_MAX_TIME)
 		
 	add_child(new_scene)
 	scene_path = new_scene.name
@@ -94,8 +97,7 @@ func _ready_kids():
 
 func _input(event):
 	if (Input.is_action_just_pressed("next_map")):
-		i += 1
-		i %= scene_order.size()
+		i = min(scene_order.size() - 1, i + 1)
 		_update_map()
 
 func _spawn_rand_kid():
@@ -132,6 +134,13 @@ func _process(delta):
 					$Fade.modulate.a = fade_timer
 					if ($Player/Camera2D/FadeLabel.modulate.a > 0.0):
 						$Player/Camera2D/FadeLabel.modulate.a = fade_timer
+		elif (scene_order[i] == scene_indices.WIN):
+			if (fade_timer > 0.0):
+				fade_timer = max(fade_timer - delta, 0.0)
+				$Fade.modulate.a = fade_timer
+				if ($Player/Camera2D/FadeLabel.modulate.a > 0.0):
+					$Player/Camera2D/FadeLabel.modulate.a = fade_timer
+			pass
 		else:
 			if (fade_timer > 0.0):
 				fade_timer = max(fade_timer - delta * 0.5, 0.0)
@@ -141,17 +150,18 @@ func _process(delta):
 			kid_spawn_timer += delta
 			
 			# kids should spawn during first x seconds of level
-			var kid_wait_time = (current_scene.SPAWN_TIME / current_scene.MAX_KIDS)
+			if (scene_order[i] != scene_indices.WIN):
+				var kid_wait_time = (current_scene.SPAWN_TIME / current_scene.MAX_KIDS)
 			
-			if kids_alive < current_scene.MAX_KIDS:
-				if kid_spawn_timer > kid_wait_time:
-					_spawn_rand_kid()
-					kid_spawn_timer = 0.0
+				if kids_alive < current_scene.MAX_KIDS:
+					if kid_spawn_timer > kid_wait_time:
+						_spawn_rand_kid()
+						kid_spawn_timer = 0.0
 			
-			if (level_timer > current_scene.LEVEL_MAX_TIME):
-				progress = true
-			else:
-				level_timer += delta
+				if (level_timer > current_scene.LEVEL_MAX_TIME):
+					progress = true
+				else:
+					level_timer += delta
 	else:
 		if (fade_timer < 1.0):
 			fade_timer = min(fade_timer + delta, 1.0)
