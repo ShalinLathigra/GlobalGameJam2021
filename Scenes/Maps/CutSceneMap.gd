@@ -6,6 +6,7 @@ export (NodePath) var OC
 
 onready var scenes = {
 	0:scene_1(),
+	1:scene_2()
 }
 
 var lines = null
@@ -29,6 +30,7 @@ func set_scene(k):
 		}
 		
 	if (self.scenes.has(i)):
+		print(self.scenes)
 		scene = self.scenes[i]
 		lines = scene["Lines"]
 		
@@ -86,8 +88,7 @@ func _input(event):
 
 
 func scene_1():
-	return 
-	{
+	return {
 		"Lines":
 			[
 				{
@@ -183,8 +184,7 @@ func scene_1():
 
 
 func scene_2():
-	return 
-	{
+	return {
 		"Lines":
 			[
 				{
