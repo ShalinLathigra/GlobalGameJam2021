@@ -724,7 +724,7 @@ position = Vector2( -108.49, -409.552 )
 scale = Vector2( 3.05748, 3.05748 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 19
+frame = 3
 playing = true
 __meta__ = {
 "_editor_description_": "q"
@@ -735,7 +735,7 @@ position = Vector2( -107.896, -345.003 )
 scale = Vector2( 3.10709, 3.10709 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 19
+frame = 3
 playing = true
 flip_h = true
 __meta__ = {
@@ -784,6 +784,13 @@ scale = Vector2( 1.5, 1.5 )
 position = Vector2( 1460.38, 600.187 )
 z_index = 3
 z_as_relative = false
+override_scale = Vector2( 2, 2 )
+
+[node name="CoffeePoint" parent="Shops" instance=ExtResource( 4 )]
+position = Vector2( 22.1334, -211.961 )
+z_index = 3
+z_as_relative = false
+type = 12
 override_scale = Vector2( 2, 2 )
 
 [node name="Shop2" parent="Shops" instance=ExtResource( 4 )]

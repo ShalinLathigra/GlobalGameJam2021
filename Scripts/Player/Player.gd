@@ -9,6 +9,11 @@ export var accel = 300
 var friction = 0.9
 var vel = Vector2()
 
+var coffee_timer = 0.0
+var max_coffee_timer = 5.0
+
+export var coffee_boost = 450
+
 var anim = PLAYER_STATE.IDLE
 var direction = PLAYER_DIR.LEFT
 
@@ -37,6 +42,10 @@ func _physics_process(_delta):
 		moving = true
 	
 	var max_speed = run_speed
+	if(coffee_timer > 0):
+		max_speed += coffee_boost
+	
+	coffee_timer -= _delta
 	
 	if moving:
 		if Input.is_action_pressed("WALK"):

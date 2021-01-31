@@ -70,7 +70,7 @@ __meta__ = {
 [node name="Fade" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 2 )
-position = Vector2( 1.41418, -1.76055 )
+position = Vector2( -119.586, -70.7606 )
 scale = Vector2( 100, 100 )
 z_index = 4095
 texture = ExtResource( 2 )
