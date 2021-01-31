@@ -457,9 +457,9 @@ flip_h = true
 [node name="Exits" type="Node2D" parent="."]
 
 [node name="Exit1" type="Area2D" parent="Exits"]
+position = Vector2( 2672.69, 1325.66 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Exit1"]
-position = Vector2( 2656.01, 1368.15 )
 rotation = 1.12143
 shape = SubResource( 31 )
 

@@ -47,23 +47,8 @@ func _ready():
 
 var fade_timer = 0.0
 
-func _process(delta):
-	
-		
-	if (scene_order[i] == scene_indices.CUTSCENE):
-		if (current_scene.done == true):
-			if (fade_timer < 1.0):
-				fade_timer = min(fade_timer + delta, 1.0)
-				$Fade.modulate.a = fade_timer
-			else:
-				i += 1
-				i %= scene_order.size()
-				_update_map()
-	else:
-		if (fade_timer > 0.0):
-			fade_timer = max(fade_timer - delta, 0.0)
-			$Fade.modulate.a = fade_timer
-		
+var level_timer = 0.0
+
 func _update_map():
 	if (get_node(scene_path)):
 		get_node(scene_path).queue_free()
@@ -74,6 +59,7 @@ func _update_map():
 	else:
 		get_node(player).visible = true
 		get_node(player).position = Vector2(0,0)
+		print(new_scene.LEVEL_MAX_TIME)
 		
 	add_child(new_scene)
 	scene_path = new_scene.name
@@ -88,7 +74,6 @@ func _update_map():
 			for y in x.get_children():
 				if "Shop" in y.name:
 					available_items.push_back(y.type)
-
 	_free_kids()
 	_ready_kids()
 
