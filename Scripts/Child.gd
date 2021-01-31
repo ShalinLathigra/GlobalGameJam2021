@@ -90,7 +90,7 @@ func _run_to_exit():
 	var player = get_node("/root/Node2D/Player")
 	player.remove_child(self.name)
 	
-	var exit_position = get_node("/root/Node2D").current_map.get_nearest_exit(position)	
+	var exit_position = get_node("/root/Node2D").current_scene.get_nearest_exit(position)	
 
 	if (player.position - position).length() < run_dist:
 		run_from_player = true
@@ -205,6 +205,8 @@ func spawn_kid(item):
 
 func _on_Area2D_area_entered(area):
 	if "Exit" in area.name:
+		print("%s : in state %s" % [name, world_state])
+	if "Exit" in area.name and world_state == STATE.RUNNING:	
 		get_node("/root/Node2D").lose_child(self)
 		$AnimatedSprite.visible = false
 		queue_free()

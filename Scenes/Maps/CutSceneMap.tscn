@@ -160,7 +160,7 @@ position = Vector2( -72.1587, -272.223 )
 scale = Vector2( 2.2, 2.2 )
 z_index = 4
 frames = SubResource( 28 )
-frame = 5
+frame = 20
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
@@ -168,23 +168,20 @@ position = Vector2( -72.7526, -232.429 )
 scale = Vector2( 2.2, 2.2 )
 z_index = 4
 frames = SubResource( 28 )
-frame = 5
+frame = 20
 playing = true
 flip_h = true
 
 [node name="CC" parent="." instance=ExtResource( 4 )]
 position = Vector2( 107.174, -146.917 )
-z_index = 4095
 chat_color = Color( 0.482353, 1, 0.513726, 1 )
 
 [node name="MC" parent="." instance=ExtResource( 4 )]
 position = Vector2( -212.447, -45.0508 )
-z_index = 4095
 frames = ExtResource( 5 )
 
 [node name="OC" parent="." instance=ExtResource( 4 )]
 position = Vector2( -2.05708, 99.9092 )
-z_index = 4095
 frames = ExtResource( 8 )
 chat_color = Color( 0.901961, 0.431373, 1, 1 )
 

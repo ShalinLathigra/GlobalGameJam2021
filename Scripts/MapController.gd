@@ -42,23 +42,8 @@ func _ready():
 
 var fade_timer = 0.0
 
-func _process(delta):
-	
-		
-	if (scene_order[i] == scene_indices.CUTSCENE):
-		if (current_scene.done == true):
-			if (fade_timer < 1.0):
-				fade_timer = min(fade_timer + delta, 1.0)
-				$Fade.modulate.a = fade_timer
-			else:
-				i += 1
-				i %= scene_order.size()
-				_update_map()
-	else:
-		if (fade_timer > 0.0):
-			fade_timer = max(fade_timer - delta, 0.0)
-			$Fade.modulate.a = fade_timer
-		
+var level_timer = 0.0
+
 func _update_map():
 	if (get_node(scene_path)):
 		get_node(scene_path).queue_free()
@@ -69,6 +54,7 @@ func _update_map():
 	else:
 		get_node(player).visible = true
 		get_node(player).position = Vector2(0,0)
+		print(new_scene.LEVEL_MAX_TIME)
 		
 	add_child(new_scene)
 	scene_path = new_scene.name
@@ -84,7 +70,7 @@ func _update_map():
 				if "Shop" in y.name:
 					available_items.push_back(y.type)
 					
-	_free_kids();
+	_free_kids()
 	_ready_kids()
 	
 func _free_kids():
@@ -94,13 +80,13 @@ func _free_kids():
 	get_node("/root/Node2D/Player").children = {}
 		
 func _ready_kids():
+	kid_spawn_timer = 0.0
+	kids_alive = 0.0
 	for x in get_node(scene_path).get_children():
 		if "Children" in x.name:
 			for y in x.get_children():
-				if "Children" in x.name:
-					var item_type = available_items[randi() % available_items.size()]
-					var item = current_scene.find_node("Shops").find_node("Shop*").get_item(item_type)
-					y.spawn_kid(item)
+				if "Child" in y.name:
+					y.tick_time = get_node(scene_path).KID_NEEDINESS
 					kids.push_back(y)
 
 func _input(event):
@@ -111,26 +97,73 @@ func _input(event):
 
 func _spawn_rand_kid():
 	var item_type = available_items[randi() % available_items.size()]
-	var item = current_map.find_node("Shops").find_node("Shop*").get_item(item_type)
+	var item = current_scene.find_node("Shops").find_node("Shop*").get_item(item_type)
 	kids.shuffle()
 	for k in kids:
-		if k.world_state == Child.STATE.NOT_SPAWNED:
-			kids_alive += 1
-			k.spawn_kid(item)
-			return
+		if (k):
+			if k.world_state == Child.STATE.NOT_SPAWNED:
+				kids_alive += 1
+				k.spawn_kid(item)
+				return
 
+var game_over = false
+var progress = false
 func _process(delta):
-	kid_spawn_timer += delta
-	
-	# kids should spawn during first x seconds of level
-	var kid_wait_time = (current_map.SPAWN_TIME / current_map.MAX_KIDS)
-	
-	if kids_alive < current_map.MAX_KIDS:
-		if kid_spawn_timer > kid_wait_time:
-			_spawn_rand_kid()
-			kid_spawn_timer = 0.0
+	if (!game_over && !progress):	
+		if (scene_order[i] == scene_indices.CUTSCENE):
+			if (current_scene.done == true):
+				if (fade_timer < 1.0):
+					fade_timer = min(fade_timer + delta, 1.0)
+					$Fade.modulate.a = fade_timer
+					if ($Player/Camera2D/FadeLabel.modulate.a > 0.0):
+						$Player/Camera2D/FadeLabel.modulate.a = fade_timer
+				else:
+					i += 1
+					i %= scene_order.size()
+					_update_map()
+			else:
+				if (fade_timer > 0.0):
+					fade_timer = max(fade_timer - delta, 0.0)
+					$Fade.modulate.a = fade_timer
+					if ($Player/Camera2D/FadeLabel.modulate.a > 0.0):
+						$Player/Camera2D/FadeLabel.modulate.a = fade_timer
+		else:
+			if (fade_timer > 0.0):
+				fade_timer = max(fade_timer - delta * 0.5, 0.0)
+				$Fade.modulate.a = fade_timer
+				if ($Player/Camera2D/FadeLabel.modulate.a > 0.0):
+					$Player/Camera2D/FadeLabel.modulate.a = fade_timer
+			kid_spawn_timer += delta
+			
+			# kids should spawn during first x seconds of level
+			var kid_wait_time = (current_scene.SPAWN_TIME / current_scene.MAX_KIDS)
+			
+			if kids_alive < current_scene.MAX_KIDS:
+				if kid_spawn_timer > kid_wait_time:
+					_spawn_rand_kid()
+					kid_spawn_timer = 0.0
+			
+			if (level_timer > current_scene.LEVEL_MAX_TIME):
+				progress = true
+			else:
+				level_timer += delta
+	else:
+		if (fade_timer < 1.0):
+			fade_timer = min(fade_timer + delta, 1.0)
+			$Fade.modulate.a = fade_timer
+			if (game_over):
+				$Player/Camera2D/FadeLabel.modulate.a = fade_timer
+		else:
+			if (progress):
+				i += 1
+			level_timer = 0.0
+			game_over = false
+			progress = false
+			_update_map()
 
 func lose_child(child):
 	kids_lost += 1
 	kids.erase(child)
 	print(kids_lost)
+	if (kids_lost >= 2):
+		game_over = true

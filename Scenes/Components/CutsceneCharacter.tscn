@@ -6,7 +6,7 @@
 
 [node name="Character" type="AnimatedSprite"]
 position = Vector2( 130.719, -102.069 )
-z_index = 4
+z_index = 500
 frames = ExtResource( 2 )
 animation = "idle"
 script = ExtResource( 1 )

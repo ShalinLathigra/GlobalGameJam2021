@@ -668,6 +668,8 @@ animations = [ {
 [node name="Map_01" type="Node2D"]
 script = ExtResource( 1 )
 KID_NEEDINESS = 25
+LEVEL_MAX_TIME = 10
+SPAWN_TIME = 5
 
 [node name="Floor" type="TileMap" parent="."]
 material = SubResource( 2 )
@@ -712,10 +714,9 @@ tile_data = PoolIntArray( -1441758, 536870915, 0, -1441757, 536870913, 0, -14417
 z_index = 4
 
 [node name="Exit01" type="Area2D" parent="Exits"]
-position = Vector2( 1779.13, 898.794 )
+position = Vector2( 2668.12, 1325.33 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/Exit01"]
-position = Vector2( 886.741, 506.426 )
 rotation = 1.11011
 shape = SubResource( 9 )
 
@@ -724,7 +725,7 @@ position = Vector2( -108.49, -409.552 )
 scale = Vector2( 3.05748, 3.05748 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 13
+frame = 1
 playing = true
 __meta__ = {
 "_editor_description_": "q"
@@ -735,7 +736,7 @@ position = Vector2( -107.896, -345.003 )
 scale = Vector2( 3.10709, 3.10709 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 13
+frame = 1
 playing = true
 flip_h = true
 __meta__ = {
