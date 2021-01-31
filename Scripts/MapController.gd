@@ -6,6 +6,7 @@ const scene_list = [
 	preload("res://Scenes/Maps/Map_01.tscn"),
 	preload("res://Scenes/Maps/Map_02.tscn"),
 	preload("res://Scenes/Maps/Map_03.tscn"),
+	preload("res://Scenes/Maps/Map_04.tscn"),
 	#preload("res://Scenes/Maps/Map_11.tscn")
 	#preload("res://Scenes/Maps/Map_02.tscn")
 	#preload("res://Scenes/Maps/Map_12.tscn")
@@ -14,7 +15,7 @@ const scene_list = [
 	preload("res://Scenes/Maps/WIN.tscn"),
 	]
 
-enum scene_indices {CUTSCENE, MAP_01, MAP_02, MAP_03, WIN}
+enum scene_indices {CUTSCENE, MAP_01, MAP_02, MAP_03, MAP_04, WIN}
 #export (scene_indices) var i
 
 var i = 0
@@ -26,6 +27,8 @@ var scene_order = [
 	scene_indices.MAP_02,
 	scene_indices.CUTSCENE,
 	scene_indices.MAP_03,
+	scene_indices.CUTSCENE,
+	scene_indices.MAP_04,
 	scene_indices.CUTSCENE,
 	scene_indices.WIN
 	]
@@ -60,9 +63,16 @@ func _update_map():
 	if (scene_order[i] == scene_indices.CUTSCENE):
 		get_node(player).visible = false
 		new_scene.set_scene(cs)
+		$CC.visible = false
 	elif (scene_order[i] == scene_indices.WIN):
 		get_node(player).visible = false
+		$CC.visible = false
 	else:
+		if (i > 2):
+			#SPAWN ORPHAN
+			# IF ORPHAN EXISTS, DELETE IT?
+			pass
+		$CC.visible = true
 		get_node(player).visible = true
 		get_node(player).position = Vector2(0,0)
 		
