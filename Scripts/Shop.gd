@@ -14,11 +14,12 @@ onready var image_map = {
 	item_type.BANANA: preload("res://Resources/Items/Banana.tres"),
 	item_type.BURGER: preload("res://Resources/Items/Burger.tres"),
 	item_type.DONUT: preload("res://Resources/Items/Donut.tres"),
-	item_type.EGG: preload("res://Resources/Items/Egg.tres")
+	item_type.EGG: preload("res://Resources/Items/Egg.tres"),
+	item_type.COFFEE: preload("res://Resources/Items/Coffee.tres")
 }
 const item_base = preload("res://Scenes/Components/Item.tscn")
 
-enum item_type {APPLE, CARROT, CHEESE, CHOCOLATE, FLOWERS, ICECREAM, MILK, PIZZA, BANANA, BURGER, DONUT, EGG}
+enum item_type {APPLE, CARROT, CHEESE, CHOCOLATE, FLOWERS, ICECREAM, MILK, PIZZA, BANANA, BURGER, DONUT, EGG, COFFEE}
 
 export (item_type) var type
 export (Vector2) var override_scale = Vector2(1.0, 1.0)
@@ -37,7 +38,10 @@ func get_item(type):
 
 
 func _on_Shop_body_entered(body):
-	if (!body.is_holding(type)):
+	if(type==item_type.COFFEE):
+		body.coffee_timer = body.max_coffee_timer
+	
+	elif (!body.is_holding(type)):
 		var item = get_item(type)
 		body.set_item(item)
 
