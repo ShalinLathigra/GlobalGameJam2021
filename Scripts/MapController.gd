@@ -154,20 +154,10 @@ func _process(delta):
 			# kids should spawn during first x seconds of level
 			if (scene_order[i] != scene_indices.WIN):
 				var kid_wait_time = (current_scene.SPAWN_TIME / current_scene.MAX_KIDS)
-<<<<<<< HEAD
-
-=======
-			
->>>>>>> a0ba38f (Add Rough Win State)
 				if kids_alive < current_scene.MAX_KIDS:
 					if kid_spawn_timer > kid_wait_time:
 						_spawn_rand_kid()
 						kid_spawn_timer = 0.0
-<<<<<<< HEAD
-
-=======
-			
->>>>>>> a0ba38f (Add Rough Win State)
 				if (level_timer > current_scene.LEVEL_MAX_TIME):
 					progress = true
 				else:

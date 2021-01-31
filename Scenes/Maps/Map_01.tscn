@@ -729,7 +729,7 @@ position = Vector2( -108.49, -409.552 )
 scale = Vector2( 3.05748, 3.05748 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 2
+frame = 16
 playing = true
 __meta__ = {
 "_editor_description_": "q"
@@ -740,7 +740,7 @@ position = Vector2( -107.896, -345.003 )
 scale = Vector2( 3.10709, 3.10709 )
 z_index = 4
 frames = SubResource( 35 )
-frame = 2
+frame = 16
 playing = true
 flip_h = true
 __meta__ = {
@@ -819,7 +819,7 @@ margin_right = 179.711
 margin_bottom = -26.9972
 custom_fonts/font = SubResource( 36 )
 text = "WASD to Move!
-Walk by a lost child and tehy'll follow you.
+Walk by a lost child and they'll follow you.
 Keep them happy or they might run away"
 __meta__ = {
 "_edit_use_anchors_": false

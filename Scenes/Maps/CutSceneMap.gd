@@ -54,24 +54,25 @@ var end_timer = 3.0
 func _process(delta):
 	if (!scene or !lines):
 		self.done = true
-	if (j < lines.size()):
-		if (!playing):
-			start_timer = max (start_timer - delta, 0.0)
-			if (start_timer <= 0.0):
-				print(lines[j])
-				#print(lines[j]["Node"])
-				current_node = get_node(lines[j]["Node"])
-				if (current_node):
-					print("F")
-					current_node._set_text(lines[j]["Line"])
-					start_timer = max_start_timer
-					playing = true
-					j += 1
-	else:
-		if (end_timer <= 0.0):
-			self.done = true
+	if (lines):
+		if (j < lines.size()):
+			if (!playing):
+				start_timer = max (start_timer - delta, 0.0)
+				if (start_timer <= 0.0):
+					print(lines[j])
+					#print(lines[j]["Node"])
+					current_node = get_node(lines[j]["Node"])
+					if (current_node):
+						print("F")
+						current_node._set_text(lines[j]["Line"])
+						start_timer = max_start_timer
+						playing = true
+						j += 1
 		else:
-			end_timer -= delta
+			if (end_timer <= 0.0):
+				self.done = true
+			else:
+				end_timer -= delta
 			
 func _input(event):
 	if (Input.is_action_just_released("ui_accept")):
