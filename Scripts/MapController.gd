@@ -5,6 +5,7 @@ const scene_list = [
 	preload("res://Scenes/Maps/CutSceneMap.tscn"),
 	preload("res://Scenes/Maps/Map_01.tscn"),
 	preload("res://Scenes/Maps/Map_02.tscn"),
+	preload("res://Scenes/Maps/Map_03.tscn"),
 	#preload("res://Scenes/Maps/Map_11.tscn")
 	#preload("res://Scenes/Maps/Map_02.tscn")
 	#preload("res://Scenes/Maps/Map_12.tscn")
@@ -12,21 +13,23 @@ const scene_list = [
 	#preload("res://Scenes/Maps/Map_13.tscn")
 	preload("res://Scenes/Maps/WIN.tscn"),
 	]
-	
-enum scene_indices {CUTSCENE, MORNING_01, MORNING_02, WIN}
+
+enum scene_indices {CUTSCENE, MAP_01, MAP_02, MAP_03, WIN}
 #export (scene_indices) var i
 
 var i = 0
 
 var scene_order = [
-	scene_indices.CUTSCENE, 
-	scene_indices.MORNING_01, 
-	scene_indices.CUTSCENE, 
-	scene_indices.MORNING_02, 
+	scene_indices.CUTSCENE,
+	scene_indices.MAP_01,
+	scene_indices.CUTSCENE,
+	scene_indices.MAP_02,
+	scene_indices.CUTSCENE,
+	scene_indices.MAP_03,
 	scene_indices.CUTSCENE,
 	scene_indices.WIN
 	]
-	
+
 export (NodePath) var cam;
 export (NodePath) var scene_path;
 export (NodePath) var player;
@@ -56,7 +59,7 @@ func _update_map():
 	var new_scene = scene_list[scene_order[i]].instance()
 	if (scene_order[i] == scene_indices.CUTSCENE):
 		get_node(player).visible = false
-		new_scene.set_lines(cs)
+		new_scene.set_scene(cs)
 	elif (scene_order[i] == scene_indices.WIN):
 		get_node(player).visible = false
 	else:
@@ -76,16 +79,15 @@ func _update_map():
 			for y in x.get_children():
 				if "Shop" in y.name:
 					available_items.push_back(y.type)
-					
 	_free_kids()
 	_ready_kids()
-	
+
 func _free_kids():
 	for x in self.kids:
 		if (x):
 			x.queue_free()
 	get_node("/root/Node2D/Player").children = {}
-		
+
 func _ready_kids():
 	kid_spawn_timer = 0.0
 	kids_alive = 0.0
@@ -120,7 +122,7 @@ var progress = false
 func _process(delta):
 	if (Input.is_action_pressed("Quit")):
 		get_tree().quit()
-	if (!game_over && !progress):	
+	if (!game_over && !progress):
 		if (scene_order[i] == scene_indices.CUTSCENE):
 			if (current_scene.done == true):
 				if (fade_timer < 1.0):
@@ -152,16 +154,14 @@ func _process(delta):
 				if ($Player/Camera2D/FadeLabel.modulate.a > 0.0):
 					$Player/Camera2D/FadeLabel.modulate.a = fade_timer
 			kid_spawn_timer += delta
-			
+
 			# kids should spawn during first x seconds of level
 			if (scene_order[i] != scene_indices.WIN):
 				var kid_wait_time = (current_scene.SPAWN_TIME / current_scene.MAX_KIDS)
-			
 				if kids_alive < current_scene.MAX_KIDS:
 					if kid_spawn_timer > kid_wait_time:
 						_spawn_rand_kid()
 						kid_spawn_timer = 0.0
-			
 				if (level_timer > current_scene.LEVEL_MAX_TIME):
 					if (kids_lost + $Player.children.size() == current_scene.MAX_KIDS):
 						progress = true

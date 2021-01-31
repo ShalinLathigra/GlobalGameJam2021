@@ -204,8 +204,6 @@ func spawn_kid(item):
 	happy_state = HAPPINESS.NEUTRAL
 
 func _on_Area2D_area_entered(area):
-	if "Exit" in area.name:
-		print("%s : in state %s" % [name, world_state])
 	if "Exit" in area.name and world_state == STATE.RUNNING:	
 		get_node("/root/Node2D").lose_child(self)
 		$AnimatedSprite.visible = false
