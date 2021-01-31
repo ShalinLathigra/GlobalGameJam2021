@@ -83,7 +83,3 @@ func scene_1():
 		"Type" : "Text"
 	}
 ]
-<<<<<<< HEAD
-
-=======
->>>>>>> be4c68c (Add mechanism for multiple Cutscene Dialogues)

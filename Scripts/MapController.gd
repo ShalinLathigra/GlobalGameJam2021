@@ -59,10 +59,11 @@ func _update_map():
 	if (scene_order[i] == scene_indices.CUTSCENE):
 		get_node(player).visible = false
 		new_scene.set_lines(cs)
+	elif (scene_order[i] == scene_indices.WIN):
+		get_node(player).visible = false
 	else:
 		get_node(player).visible = true
 		get_node(player).position = Vector2(0,0)
-		print(new_scene.LEVEL_MAX_TIME)
 		
 	add_child(new_scene)
 	scene_path = new_scene.name
@@ -153,12 +154,20 @@ func _process(delta):
 			# kids should spawn during first x seconds of level
 			if (scene_order[i] != scene_indices.WIN):
 				var kid_wait_time = (current_scene.SPAWN_TIME / current_scene.MAX_KIDS)
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> a0ba38f (Add Rough Win State)
 				if kids_alive < current_scene.MAX_KIDS:
 					if kid_spawn_timer > kid_wait_time:
 						_spawn_rand_kid()
 						kid_spawn_timer = 0.0
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> a0ba38f (Add Rough Win State)
 				if (level_timer > current_scene.LEVEL_MAX_TIME):
 					progress = true
 				else:
